@@ -1,24 +1,10 @@
-# README
+# Bike-Share
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A site that analyzes bike share usage, and allows a user to purchase bike accessories via an online store.
 
-Things you may want to cover:
+An online commerce platform to facilitate online ordering.
 
-* Ruby version
+This application will collect data in two ways:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Through web forms allowing users to enter trip/station information
+* By consuming CSV files with historical information for stations and trips. In addition to creating and storing this information for viewing at a later date, this application will provide a number of user dashboards with higher level analysis of trends in bike share usage.
