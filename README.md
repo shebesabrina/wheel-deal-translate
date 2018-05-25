@@ -1,4 +1,5 @@
-# Bike-Share
+# The Wheel Deal
+### Bike Share
 
 A site that analyzes bike share usage, and allows a user to purchase bike accessories via an online store.
 
