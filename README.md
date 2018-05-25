@@ -1,6 +1,8 @@
 # The Wheel Deal
 ### Bike Share
 
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/JerrelMitchell/bike-share.svg?columns=all)](https://waffle.io/JerrelMitchell/bike-share)
+
 A site that analyzes bike share usage, and allows a user to purchase bike accessories via an online store.
 
 An online commerce platform to facilitate online ordering.
