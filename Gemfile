@@ -45,7 +45,7 @@ group :development, :test do
   gem 'pry'
   gem 'active_designer'
   gem 'database_cleaner'
->>>>>>> 1442a41561956a72d926e3b2bd29cdc7a177920f
+  gem 'factory_bot_rails'
 end
 
 group :development do
