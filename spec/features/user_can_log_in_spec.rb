@@ -5,6 +5,7 @@ describe 'visitor' do
     it 'should log in default user and bring to dashboard' do
       username = 'jerrel2'
       password = 'secret'
+      logged_in_message = "Logged in as #{username}"
       user = User.create!(username: username, password: password)
 
       visit '/'
@@ -17,6 +18,7 @@ describe 'visitor' do
       click_button 'Log In'
 
       expect(current_path).to eq(user_dashboard_path(user))
+      expect(page).to have_content(logged_in_message)
       expect(page).to have_link('Log Out')
     end
   end
