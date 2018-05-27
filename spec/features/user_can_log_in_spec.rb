@@ -17,6 +17,7 @@ describe 'visitor' do
       click_button 'Log In'
 
       expect(current_path).to eq(user_dashboard_path(user))
+      expect(page).to have_content(logged_in_message)
       expect(page).to have_link('Log Out')
     end
     xit 'can log out of account after signing in' do
