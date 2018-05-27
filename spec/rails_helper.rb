@@ -5,13 +5,25 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'simplecov'
+SimpleCov.start
 # Add additional requires below this line. Rails is not loaded until this point!
+
+DatabaseCleaner.strategy = :truncation
+
+RSpec.configure do |c|
+  c.before(:each) do
+    DatabaseCleaner.clean
+  end
+  c.after(:each) do
+    DatabaseCleaner.clean
+  end
+  c.include Capybara::DSL
+end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
-    # Choose a test framework:
     with.test_framework :rspec
-    # Or, choose the following (which implies all of the above):
     with.library :rails
   end
 end
