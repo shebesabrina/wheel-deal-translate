@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_05_27_215603) do
 
   # These are extensions that must be enabled in order to support this database
@@ -20,8 +21,29 @@ ActiveRecord::Schema.define(version: 2018_05_27_215603) do
     t.integer "dock_count"
     t.string "city"
     t.string "installation_date"
+
+  create_table "accessories", force: :cascade do |t|
+    t.string "title"
+    t.string "thumbnail"
+    t.string "description"
+    t.integer "price"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "duration"
+    t.text "start_date"
+    t.text "end_date"
+    t.integer "start_station"
+    t.integer "end_station"
+    t.integer "bike_id"
+    t.string "subscription_type"
+    t.integer "zip_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["end_date"], name: "index_trips_on_end_date"
   end
 
   create_table "users", force: :cascade do |t|
