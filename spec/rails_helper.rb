@@ -9,14 +9,12 @@ require 'support/factory_bot'
 require 'simplecov'
 SimpleCov.start
 # Add additional requires below this line. Rails is not loaded until this point!
-
 DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |c|
   c.before(:each) do
     DatabaseCleaner.clean
   end
-
   c.after(:each) do
     DatabaseCleaner.clean
   end
