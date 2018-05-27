@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :stations, only: [:index]
-  get '/:name', to: 'stations#show'
+  get '/:name', to: 'stations#show', as: :station
 end
