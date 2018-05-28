@@ -9,9 +9,6 @@ describe 'Vistor sees /bike-shop' do
     visit '/bike-shop'
 
     expect(page).to have_content(accessory.title)
-    expect(page).to have_content(accessory.description)
-    expect(page).to have_content(accessory.price)
-    expect(page).to have_content(accessory.thumbnail)
     expect(page).to have_css('div.accessories', count: 12)
     expect(page).to have_button("Add to Cart", count: 12)
   end

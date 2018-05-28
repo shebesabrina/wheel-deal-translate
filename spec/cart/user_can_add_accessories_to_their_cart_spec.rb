@@ -16,9 +16,9 @@ describe 'Visitor index page' do
 end
 
 describe 'Visitor index page' do
-  xit 'displays the the increment amount of accessories' do
+  it 'displays the the increment amount of accessories' do
 
-    accessory_1 = create(:accessory, title: "Pizza Cat 1", id: 1)
+    accessory = create(:accessory, title: "Pizza Cat 1", id: 1)
 
     visit '/bike-shop'
 
@@ -26,16 +26,32 @@ describe 'Visitor index page' do
       click_on "Add to Cart"
     end
 
-    expect(page).to have_content("Added 1 #{accessory_1.title} to your cart.")
-
-    accessory_2 = create(:accessory, title: "Pizza Cat 2", id: 2)
+    expect(page).to have_content("Added 1 #{accessory.title} to your cart.")
 
     visit '/bike-shop'
 
-    within find_by_id(id: 2) do
+    within(:xpath, '/html/body/div[1]') do
       click_on "Add to Cart"
     end
 
-    expect(page).to have_content("Added 2 #{accessory_2.title} to your cart.")
+    # find('div.accessories:nth-child(2)').click_on "Add to Cart"
+    # find("div.accessories", :title => "Pizza Cat 2").click_on "Add to Cart"
+# save_and_open_page
+    expect(page).to have_content("Added 2 #{accessory.title} to your cart.")
+  end
+end
+
+describe 'Visitor index page' do
+  it 'displays number of accessories in the cart' do
+
+    visit '/bike-shop'
+
+    expect(page).to have_content('Cart: 0')
+
+    within first("div.accessories") do
+      click_on "Add to Cart"
+    end
+
+    expect(page).to have_content('Cart: 1')
   end
 end
