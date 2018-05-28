@@ -1,0 +1,6 @@
+  <% @accessories.each do |accessory| %>
+    <div class="accessories" id="accessory_<% accessory.id %>">
+    <%= accessory.title %>
+    <%= button_to "Add to Cart", carts_path(id: accessory.id), class: "btn btn-danger" %>
+    </div>
+  <% end %>
