@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   resources :users, only: [:show]
+  resources :stations, only: [:index]
+  get '/:name', to: 'stations#show', as: :station
 
   resources :trips, only: [:show, :index]
 end
