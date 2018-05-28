@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   resources :trips, only: [:show, :index]
 
   namespace :admin do
-    resources :accessories
+    resources :accessories, only: [:index]
   end
 end
