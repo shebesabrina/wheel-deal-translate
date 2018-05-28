@@ -16,7 +16,7 @@ describe 'Visitor index page' do
 end
 
 describe 'Visitor index page' do
-  it 'displays the the increment amount of accessories' do
+  xit 'displays the the increment amount of accessories' do
 
     accessory = create(:accessory, title: "Pizza Cat 1", id: 1)
 
