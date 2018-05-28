@@ -9,4 +9,7 @@ class Trip < ApplicationRecord
 
   has_many :trip_stations
   has_many :stations, through: :trip_stations
+
+  foreign_key :start_station
+  foreign_key :end_station
 end
