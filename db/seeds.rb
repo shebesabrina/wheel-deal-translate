@@ -5,6 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+STATION_NAMES = ["Blake", "Market", "City Park", "Lucinda", "Shields", "College", "Oak", "Old Town", "Mulberry", "Silver Glenn", "Corron"]
+CITY = ["Fort Collins", "Denver", "Aurora", "Aspen", "Loveland", "Westminster", "Colorado Springs", "Golden", "Lakewood", "Arvada"]
+
 85.times do
-  Trip.create!(duration: 63, start_date: '8/29/2013 14:13', start_station: 66, end_date: '8/29/2013 14:14', end_station: 66, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+  trip = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station: 66, end_date: '8/29/2013 14:14', end_station: 66, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+  2.times do
+    station = trip.stations.create!(name: STATION_NAMES.sample, city: CITY.sample, dock_count: rand(0..12))
+  end
+   trip.start_station = trip.stations.first.id
+   trip.end_station = trip.stations.last.id
+   trip.save
 end

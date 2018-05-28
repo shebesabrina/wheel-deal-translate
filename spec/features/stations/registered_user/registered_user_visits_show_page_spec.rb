@@ -27,7 +27,7 @@ describe 'registered user' do
 
       visit "/#{station.name}"
 
-      # expect(page).to have_content(station.started_at)
+      expect(page).to have_content(station.started_at)
     end
   end
 end
