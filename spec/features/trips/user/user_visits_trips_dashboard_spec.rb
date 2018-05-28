@@ -10,21 +10,23 @@ require 'rails_helper'
 describe 'as a registered user logging in and visiting /trips-dashboard' do
   it 'sees a trips dashboard of relevent information' do
     10.times do
+      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
+      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
       Trip.create!(duration: 60, start_date: '8/29/2013 14:13',
-                   start_station: 10, end_date: '8/30/2013 11:14',
-                   end_station: 66, bike_id: 563,
+                   start_station_id: 1, end_date: '8/30/2013 11:14',
+                   end_station_id: 2, bike_id: 563,
                    subscription_type: 'Subscriber', zip_code: 94127)
     end
     5.times do
       Trip.create!(duration: 20, start_date: '8/29/2013 14:13',
-                   start_station: 10, end_date: '8/30/2013 11:14',
-                   end_station: 66, bike_id: 120,
+                   start_station_id: 1, end_date: '8/30/2013 11:14',
+                   end_station_id: 3, bike_id: 120,
                    subscription_type: 'Customer', zip_code: 94127)
     end
     2.times do
       Trip.create!(duration: 15, start_date: '8/29/2013 14:13',
-                   start_station: 10, end_date: '8/30/2013 11:14',
-                   end_station: 66, bike_id: 111,
+                   start_station_id: 2, end_date: '8/30/2013 11:14',
+                   end_station_id: 5, bike_id: 111,
                    subscription_type: 'Subscriber', zip_code: 94127)
     end
 
@@ -48,8 +50,6 @@ describe 'as a registered user logging in and visiting /trips-dashboard' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit trips_dashboard_path
-
-    save_and_open_page
 
     expect(page).to have_content(average_trip_duration)
     expect(page).to have_content(longest_duration)
