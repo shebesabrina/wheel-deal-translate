@@ -27,6 +27,8 @@ class TripsController < ApplicationController
     least_popular_date_stats  = Trip.least_popular_date
     @least_popular_date       = least_popular_date_stats[0]
     @least_popular_date_count = least_popular_date_stats[1]
+
+    @subscription_types_breakdown = Trip.subscription_type_breakdown
   end
 
   private
