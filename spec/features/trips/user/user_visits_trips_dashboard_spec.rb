@@ -49,7 +49,6 @@ describe 'as a registered user logging in and visiting /trips-dashboard' do
 
     visit trips_dashboard_path
 
-    save_and_open_page
 
     expect(page).to have_content(average_trip_duration)
     expect(page).to have_content(longest_duration)

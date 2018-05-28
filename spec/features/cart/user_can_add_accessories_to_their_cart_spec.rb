@@ -21,22 +21,17 @@ describe 'Visitor index page' do
     accessory = create(:accessory, title: "Pizza Cat 1", id: 1)
 
     visit '/bike-shop'
-
+    
     within first("div.accessories") do
       click_on "Add to Cart"
     end
 
     expect(page).to have_content("Added 1 #{accessory.title} to your cart.")
 
-    visit '/bike-shop'
-
-    within(:xpath, '/html/body/div[1]') do
+    within first("div.accessories") do
       click_on "Add to Cart"
     end
 
-    # find('div.accessories:nth-child(2)').click_on "Add to Cart"
-    # find("div.accessories", :title => "Pizza Cat 2").click_on "Add to Cart"
-# save_and_open_page
     expect(page).to have_content("Added 2 #{accessory.title} to your cart.")
   end
 end
