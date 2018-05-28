@@ -10,21 +10,21 @@ describe 'Visitor index page' do
     within first("div.accessories") do
       click_on "Add to Cart"
     end
-# save_and_open_page
+
     expect(page).to have_content("Added 1 #{accessory.title} to your cart")
   end
 end
 
 describe 'Visitor index page' do
-  it 'displays the the increment amount of accessories' do
+  xit 'displays the the increment amount of accessories' do
 
     accessory_1 = create(:accessory, title: "Pizza Cat 1", id: 1)
 
     visit '/bike-shop'
 
-    # within first("div.accessories") do
+    within first("div.accessories") do
       click_on "Add to Cart"
-    # end
+    end
 
     expect(page).to have_content("Added 1 #{accessory_1.title} to your cart.")
 
@@ -32,9 +32,9 @@ describe 'Visitor index page' do
 
     visit '/bike-shop'
 
-    # within find_by_id(2) do
+    within find_by_id(id: 2) do
       click_on "Add to Cart"
-    # end
+    end
 
     expect(page).to have_content("Added 2 #{accessory_2.title} to your cart.")
   end
