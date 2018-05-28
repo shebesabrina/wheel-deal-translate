@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   def current_user?
     User.find(params[:user_id]) == current_user
   end
+
+  def current_admin?
+    current_user && current_user.admin?
+  end
 end

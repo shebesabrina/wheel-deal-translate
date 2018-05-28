@@ -12,5 +12,8 @@ Rails.application.routes.draw do
 
   resources :users, except: :index
 
+  resources :stations, only: [:index]
+  get '/:name', to: 'stations#show', as: :station
+
   resources :trips, only: [:show, :index]
 end
