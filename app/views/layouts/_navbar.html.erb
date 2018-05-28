@@ -15,14 +15,16 @@
 <div class="user-nav">
   <% if !current_user.nil? %>
   <%= link_to "Home", root_path %>
+  <% if !current_user.admin? %>
   <%= "Logged in as: #{current_user.username}" %>
+  <% else %>
+  <%= "Logged in as Admin User: #{current_user.username} "%>
+  <% end %>
   <% end %>
 </div>
 <% end %>
 <% content_for :admin do %>
 <div class="admin-nav">
-  <%= link_to "Home", root_path %>
-  <%= "Logged in as Admin User: #{current_admin?.username} "%>
 </div>
 <% end %>
 </nav>

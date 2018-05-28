@@ -16,7 +16,7 @@
     <% end %>
 
     <p>Cart: <%= @cart.total_count %></p>
-    
+
     <container>
      <% if current_user.nil? %>
        <% render 'layouts/navbar' %>
@@ -32,6 +32,5 @@
      <%= yield %>
    </container>
 
-    <%= yield %>
   </body>
 </html>
