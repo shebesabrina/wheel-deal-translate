@@ -30,7 +30,10 @@ RSpec.describe Trip, type: :model do
     expect(Trip.shortest_duration).to eq(20)
     expect(Trip.most_ridden_bike).to eq([520, 20])
     expect(Trip.least_ridden_bike).to eq([55, 10])
-    expect(Trip.most_popular_date).to eq(["8/29/2013 14:13", 20])
-    expect(Trip.least_popular_date).to eq(["7/15/2013 10:13", 10])
+    expect(Trip.most_popular_date).to eq(['8/29/2013 14:13', 20])
+    expect(Trip.least_popular_date).to eq(['7/15/2013 10:13', 10])
+    expect(Trip.subscription_type_percents).to eq([['Customer', 33.33], ['Subscriber', 66.67]])
+    expect(Trip.subscription_type_counts).to eq('Subscriber' => 20, 'Customer' => 10)
+    expect(Trip.subscription_type_breakdown).to eq([[10, ["Customer", 33.33]], [20, ["Subscriber", 66.67]]])
   end
 end
