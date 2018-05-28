@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 describe 'Admin role login' do
-  it 'displays the admin dashboard page' do
+  xit 'displays the admin dashboard page' do
 
-    admin = create(:user, role: 1)
-
+    admin = User.create!(username: 'Jerrel', password: 'password', role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit admin_accessories_path
