@@ -1,12 +1,23 @@
-<div id="login_form">
-<%= form_tag login_path do %>
+<div class="login">
+
+<% if current_user.nil? %>
+<h3>Log In To Your Account</h3>
+<%= form_tag login_path %>
 
 <%= label_tag :username %>
 <%= text_field_tag :username %>
 
 <%= label_tag :password %>
 <%= password_field_tag :password %>
-
+<br>
 <%= submit_tag "Log In" %>
-<% end %>
 </div>
+<br>
+
+<div>
+  <h4><%= link_to "Sign Up", new_user_path %> to have access to some cool stats, and to checkout any cart items!</h4>
+</div>
+<% else %>
+
+<h4>You're already signed in! Want to check out our <%= link_to "accessories page", accessories_path(current_user)%>?</h4>
+<% end %>

@@ -1,0 +1,35 @@
+<main>
+  <h1>Trips Dashboard</h1>
+<table class="trips-dashboard">
+  <thead>
+    <tr>
+      <th>Average Ride Duration</th>
+      <th>Longest Ride</th>
+      <th>Shortest Ride</th>
+      <th>Most Started-At Station</th>
+      <th>Most Ended-At Station</th>
+      <th>Monthly Ride Breakdown</th>
+      <th>Most Ridden Bike</th>
+      <th>Least Ridden Bike</th>
+      <th>User Subscription Chart</th>
+      <th>Date of Most Trips</th>
+      <th>Date of Least Trips</th>
+    </tr>
+    </thead>
+      <tbody>
+      <tr>
+        <td><%= @average_trip_duration %></td>
+        <td><%= @longest_ride %></td>
+        <td><%= @shortest_ride %></td>
+        <td><%= @most_ridden_bike %></td>
+        <td><%= @most_ridden_bike_count %></td>
+        <td><%= @least_ridden_bike %></td>
+        <td><%= @least_ridden_bike_count %></td>
+        <td><%= @most_popular_date %></td>
+        <td><%= @most_popular_date_count %></td>
+        <td><%= @least_popular_date %></td>
+        <td><%= @least_popular_date_count %></td>
+      </tr>
+    </tbody>
+  </table>
+</main>
