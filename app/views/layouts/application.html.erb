@@ -10,11 +10,27 @@
   </head>
 
   <body>
+
     <% flash.each do |type, message| %>
     <%= content_tag :div, message, class: type %>
     <% end %>
 
     <p>Cart: <%= @cart.total_count %></p>
+    
+    <container>
+     <% if current_user.nil? %>
+       <% render 'layouts/navbar' %>
+       <%= yield :visitor %>
+     <% else %>
+       <% render 'layouts/navbar' %>
+       <%= yield :user %>
+       <% if current_user.admin? %>
+         <%= yield :admin %>
+       <% end %>
+     <% end %>
+     <div id="notice"><%= notice %></div>
+     <%= yield %>
+   </container>
 
     <%= yield %>
   </body>

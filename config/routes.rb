@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :new, :create]
   resources :carts, except: [:index]
   resources :trips, only: [:show, :index]
+
+  namespace :admin do
+    resources :accessories
+  end
 end
