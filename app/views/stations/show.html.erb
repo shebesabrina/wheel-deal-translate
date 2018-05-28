@@ -3,4 +3,10 @@
     <li>Dock Count: <%= @station.dock_count %></li>
     <li>City: <%= @station.city %></li>
     <li>Installation Date: <%= @station.created_at %></li>
+    <li>Number of Rides Started at this Station: <%= @station.started_at %></li>
+    <li>Number of Rides Ended at this Station: <%= @station.ended_at %></li>
+    <li>Popular Destination Station: <%= @station.popular_end_station %></li>
+    <li>Popular Starting Station: <%= @station.popular_start_station %></li>
+    <li>Popular Starting Date: <%= @station.popular_date %></li>
+    <li>Popular Zip Code of Users Starting at this Station: <%= @station.popular_zip %></li>
 </ul>

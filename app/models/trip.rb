@@ -7,6 +7,6 @@ class Trip < ApplicationRecord
             :bike_id,
             :subscription_type, presence: true
 
-  belongs_to :start_station, class_name: "Station", foreign_key: "start_station"
-  belongs_to :end_station, class_name: "Station", foreign_key: "end_station"
+  belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
+  belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
 end
