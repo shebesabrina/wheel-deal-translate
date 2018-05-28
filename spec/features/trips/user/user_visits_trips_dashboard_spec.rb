@@ -10,6 +10,8 @@ require 'rails_helper'
 describe 'as a registered user logging in and visiting /trips-dashboard' do
   it 'sees a trips dashboard of relevent information' do
     10.times do
+      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
+      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
       Trip.create!(duration: 60, start_date: '2/24/2011 11:21',
                    start_station: 10, end_date: '2/30/2013 11:14',
                    end_station: 66, bike_id: 563,
@@ -48,7 +50,6 @@ describe 'as a registered user logging in and visiting /trips-dashboard' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit trips_dashboard_path
-
 
     expect(page).to have_content(average_trip_duration)
     expect(page).to have_content(longest_duration)
