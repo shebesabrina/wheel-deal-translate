@@ -2,3 +2,4 @@
 <%= accessory.title %>
 <%= accessory.description %>
 <%= accessory.price %>
+<%= button_to "Add to Cart", carts_path(id: accessory.id), class: "btn btn-danger" %>

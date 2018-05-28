@@ -13,6 +13,5 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
   resources :carts, except: [:index]
-
   resources :trips, only: [:show, :index]
 end
