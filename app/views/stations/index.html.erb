@@ -1,0 +1,10 @@
+<h1>Stations Index</h1>
+
+<% @stations.each do |station| %>
+  <ul>
+    <li>Name: <%= link_to "#{station.name}", "/#{station.name}" %></li>
+    <li>Dock Count: <%= station.dock_count %></li>
+    <li>City :<%= station.city %></li>
+    <li>Installation Date: <%= station.installation_date %></li>
+  </ul>
+<%end%>

@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-
-  end
+  def new; end
 
   def create
     user = User.find_by(username: params[:username])
@@ -9,8 +7,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_dashboard_path(user)
     else
-      render :new
-      flash[:notice] = "Invalid username and/or password. Please try again!"
+      render :new, flash[:notice] = 'Invalid username and/or password. Please try again!'
     end
   end
 

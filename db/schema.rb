@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_27_195958) do
+
+ActiveRecord::Schema.define(version: 2018_05_28_000620) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +26,25 @@ ActiveRecord::Schema.define(version: 2018_05_27_195958) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "stations", force: :cascade do |t|
+    t.string "name"
+    t.integer "dock_count"
+    t.string "city"
+    t.string "installation_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trip_stations", force: :cascade do |t|
+    t.bigint "station_id"
+    t.bigint "trip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["station_id"], name: "index_trip_stations_on_station_id"
+    t.index ["trip_id"], name: "index_trip_stations_on_trip_id"
+  end
+
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
@@ -47,4 +68,6 @@ ActiveRecord::Schema.define(version: 2018_05_27_195958) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "trip_stations", "stations"
+  add_foreign_key "trip_stations", "trips"
 end
