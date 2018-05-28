@@ -12,16 +12,20 @@ RSpec.describe Trip, type: :model do
   end
 
   it 'has model level dashboard methods' do
+    Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
+    Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
     20.times do
+      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
+      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
       Trip.create!(duration: 60, start_date: '8/29/2013 14:13',
-                   start_station: 10, end_date: '8/30/2013 11:14',
-                   end_station: 66, bike_id: 520,
+                   start_station_id: 1, end_date: '8/30/2013 11:14',
+                   end_station_id: 2, bike_id: 520,
                    subscription_type: 'Subscriber', zip_code: 94127)
     end
     10.times do
       Trip.create!(duration: 20, start_date: '7/15/2013 10:13',
-                   start_station: 10, end_date: '7/15/2011 11:14',
-                   end_station: 66, bike_id: 55,
+                   start_station_id: 1, end_date: '7/15/2011 11:14',
+                   end_station_id: 2, bike_id: 55,
                    subscription_type: 'Customer', zip_code: 93123)
     end
 
