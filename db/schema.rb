@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2018_05_28_000620) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_000620) do
     t.index ["station_id"], name: "index_trip_stations_on_station_id"
     t.index ["trip_id"], name: "index_trip_stations_on_trip_id"
   end
+
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
