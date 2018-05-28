@@ -22,10 +22,15 @@ Rails.application.routes.draw do
 
   resources :carts, except: [:index]
 
+<<<<<<< HEAD
   resources :trips, only: [:show, :index]
   resources :accessories, only: [:show, :index]
   
+=======
+  resources :accessories
+
+>>>>>>> d181fb830d751742cb3ea232b7dee84c8927a696
   namespace :admin do
-    resources :accessories
+    resources :accessories, only: [:index]
   end
 end
