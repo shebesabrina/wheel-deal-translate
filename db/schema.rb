@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2018_05_27_195958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "accessories", force: :cascade do |t|
     t.string "title"
@@ -25,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_05_27_195958) do
     t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
 
   create_table "trips", force: :cascade do |t|
     t.integer "duration"
@@ -38,7 +37,6 @@ ActiveRecord::Schema.define(version: 2018_05_27_195958) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["end_date"], name: "index_trips_on_end_date"
-
   end
 
   create_table "users", force: :cascade do |t|

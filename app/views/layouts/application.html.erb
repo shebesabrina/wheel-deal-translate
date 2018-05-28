@@ -11,5 +11,8 @@
 
   <body>
     <%= yield %>
+    <% flash.each do |type, message| %>
+    <%= content_tag :div, message, class: type %>
+<% end %>
   </body>
 </html>
