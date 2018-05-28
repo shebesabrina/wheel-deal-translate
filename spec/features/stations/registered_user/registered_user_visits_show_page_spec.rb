@@ -110,7 +110,7 @@ describe 'registered user' do
 
       visit "/#{station.name}"
 
-      expect(page).to have_content(station.popular_zip)
+      expect(page).to have_content(station.popular_bike)
     end
   end
 end

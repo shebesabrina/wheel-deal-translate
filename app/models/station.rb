@@ -29,4 +29,7 @@ class Station < ApplicationRecord
     Trip.where(start_station_id: id).group(:zip_code).count.max.first
   end
 
+  def popular_bike
+    Trip.where(start_station_id: id).group(:bike_id).count.max.first
+  end
 end
