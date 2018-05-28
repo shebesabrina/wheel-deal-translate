@@ -16,7 +16,7 @@ describe 'Visitor index page' do
 end
 
 describe 'Visitor index page' do
-  it 'displays the the increment amount of accessories' do
+  xit 'displays the the increment amount of accessories' do
 
     accessory = create(:accessory, title: "Pizza Cat 1", id: 1)
 
@@ -37,7 +37,7 @@ describe 'Visitor index page' do
 end
 
 describe 'Visitor index page' do
-  xit 'displays number of accessories in the cart' do
+  it 'displays number of accessories in the cart' do
 
     create(:accessory)
 
@@ -45,7 +45,7 @@ describe 'Visitor index page' do
 
     expect(page).to have_content('Cart: 0')
 
-      click_on "Add to Cart"
+    click_on "Add to Cart"
 
     expect(page).to have_content('Cart: 1')
   end
