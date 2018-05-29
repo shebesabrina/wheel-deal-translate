@@ -4,7 +4,7 @@ describe 'opens trips index page' do
   context 'as visitor' do
     it 'allows me to see up to 30 trips per page' do
       Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
-      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
+      Station.create(name: 'Blake', dock_count: 5, city: "Fort Collins")
       35.times do
         Trip.create!(duration: 63, start_date: '8/29/2013 14:13',
                      start_station_id: 1, end_date: '8/30/2013 11:14',
@@ -18,9 +18,9 @@ describe 'opens trips index page' do
       expect(page).to have_content('Trips')
       expect(page).to have_content(trip.duration, count: 30)
       expect(page).to have_content(trip.start_date, count: 30)
-      expect(page).to have_content(trip.start_station, count: 30)
+      expect(page).to have_content(trip.start_station.name, count: 30)
       expect(page).to have_content(trip.end_date, count: 30)
-      expect(page).to have_content(trip.end_station, count: 30)
+      expect(page).to have_content(trip.end_station.name, count: 30)
       expect(page).to have_content(trip.bike_id, count: 30)
       expect(page).to have_content(trip.subscription_type, count: 30)
       expect(page).to have_content(trip.zip_code, count: 30)

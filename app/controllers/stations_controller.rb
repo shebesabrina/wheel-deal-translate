@@ -4,7 +4,7 @@ class StationsController < ApplicationController
   end
 
   def show
-    @station = Station.find_by(name: params[:name])
+    @station = Station.find_by(name: params[:station_name])
   end
 
 
