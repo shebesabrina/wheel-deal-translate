@@ -15,5 +15,5 @@ end
 
 
 85.times do
-  trip = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station: rand(1..11), end_date: '8/29/2013 14:14', end_station: rand(1..11), bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+  trip = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: rand(1..11), end_date: '8/29/2013 14:14', end_station_id: rand(1..11), bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
 end
