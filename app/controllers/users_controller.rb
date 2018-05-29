@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       render :new
-      flash[:notice] = 'Fill in all fields before submitting!'
+      flash[:notice] = 'That username exists, or you must fill in all fields before submitting.'
     end
   end
 

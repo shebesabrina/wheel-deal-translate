@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'opens trips index page' do
   context 'as visitor' do
-    it 'allows me to see up to 30 trips per page' do
+    xit 'allows me to see up to 30 trips per page' do
       Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
       Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
       35.times do
