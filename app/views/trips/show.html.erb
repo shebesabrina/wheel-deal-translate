@@ -1,3 +1,7 @@
+<% if !current_user.nil? && current_user.admin? %>
+<td><%= link_to "Edit", edit_admin_trip_path(@trip) %></td>
+<td><%= link_to "Delete", admin_trip_path(@trip), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>
 <%= @trip.duration %>
 <%= @trip.start_date %>
 <%= @trip.end_date %>

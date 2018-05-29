@@ -27,4 +27,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :accessories, only: [:index]
   end
+
+  namespace :admin do
+    resources :trips
+  end
 end

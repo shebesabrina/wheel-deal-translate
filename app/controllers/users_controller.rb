@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  def show; end
+  def show
+    not_found unless current_user?
+  end
 
   def edit; end
 

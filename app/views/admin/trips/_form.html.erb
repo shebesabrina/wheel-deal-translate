@@ -1,0 +1,28 @@
+<%= form_for [:admin, @trip] do |form| %>
+
+  <%= form.label :duration %>
+  <%= form.text_field :duration %>
+
+  <%= form.label :start_date %>
+  <%= form.text_field :start_date %>
+
+  <%= form.label :end_date %>
+  <%= form.text_field :end_date %>
+
+  <!-- <%= form.label :start_station %>
+  <%= form.text_field :start_station %> -->
+
+  <!-- <%= form.label :end_station %>
+  <%= form.text_field :end_station %> -->
+
+  <%= form.label :bike_id %>
+  <%= form.text_field :bike_id %>
+
+  <%= form.label :subscription_type %>
+  <%= form.text_field :subscription_type %>
+
+  <%= form.label :zip_code %>
+  <%= form.text_field :zip_code %>
+  <br>
+  <%= form.submit %>
+<% end %>
