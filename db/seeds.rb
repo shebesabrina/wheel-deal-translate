@@ -17,6 +17,6 @@ end
   trip = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: rand(1..11), end_date: '8/29/2013 14:14', end_station_id: rand(1..11), bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
 end
 
-37.times do
+21.times do
   accessory = Accessory.create(title: 'Pizza Cat', description: 'Delicious!', thumbnail: 'bike_horse.jpg', price: 20)
 end
