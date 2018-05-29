@@ -3,10 +3,12 @@ require 'rails_helper'
 describe 'opens trips index page' do
   context 'as visitor' do
     it 'allows me to see up to 30 trips per page' do
+      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
+      Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
       35.times do
         Trip.create!(duration: 63, start_date: '8/29/2013 14:13',
-                     start_station: 10, end_date: '8/30/2013 11:14',
-                     end_station: 66, bike_id: 520,
+                     start_station_id: 1, end_date: '8/30/2013 11:14',
+                     end_station_id: 2, bike_id: 520,
                      subscription_type: 'Subscriber', zip_code: 94127)
       end
       trip = Trip.first
