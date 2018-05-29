@@ -3,7 +3,8 @@
 #
 # Examples:
 admin = User.create!(username: 'Pizza Cat', password: 'password', role: 1)
-user = User.create!(username: 'Jerrel', password: 'password')
+user1 = User.create!(username: 'Jerrel', password: 'password')
+user2 = User.create!(username: 'PettyPal', password: 'password')
 
 STATION_NAMES = ["Blake", "Market", "City Park", "Lucinda", "Shields", "College", "Oak", "Old Town", "Mulberry", "Silver Glenn", "Corron"]
 CITY = ["Fort Collins", "Denver", "Aurora", "Aspen", "Loveland", "Westminster", "Colorado Springs", "Golden", "Lakewood", "Arvada"]
@@ -12,7 +13,10 @@ stations = STATION_NAMES.map do |name|
    Station.create!(name: name, city: CITY.sample, dock_count: rand(0..12), installation_date: '7/18/2015')
 end
 
-
 85.times do
   trip = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: rand(1..11), end_date: '8/29/2013 14:14', end_station_id: rand(1..11), bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+end
+
+26.times do
+  accessory = Accessory.create(title: 'Pizza Cat', description: 'Delicious!', thumbnail: 'bike_horse.jpg', price: 10 )
 end
