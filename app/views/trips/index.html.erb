@@ -4,6 +4,10 @@
 <table class="trips">
   <thead>
     <tr>
+      <% if !current_user.nil? && current_user.admin? %>
+      <th>Edit</th>
+      <th>Delete</th>
+      <% end %>
       <th>Duration</th>
       <th>Start Date</th>
       <th>Start Station</th>
@@ -17,11 +21,15 @@
       <tbody>
       <% @trips.each do |trip| %>
       <tr class=trip_<%= trip.id %>>
+        <% if !current_user.nil? && current_user.admin? %>
+        <td><%= link_to "Edit", edit_admin_trip_path(trip) %></td>
+        <td><%= link_to "Delete", admin_trip_path(trip), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         <td><%= trip.duration %></td>
         <td><%= trip.start_date %></td>
-        <td><%= trip.start_station %></td>
+        <td><%= trip.start_station.name %></td>
         <td><%= trip.end_date %></td>
-        <td><%= trip.end_station %></td>
+        <td><%= trip.end_station.name %></td>
         <td><%= trip.bike_id %></td>
         <td><%= trip.subscription_type %></td>
         <td><%= trip.zip_code %></td>

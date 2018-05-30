@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  def show; end
+  def show
+    not_found unless current_user?
+  end
 
   def edit; end
 
@@ -15,8 +17,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
+      flash[:notice] = 'That username is taken, or information submitted was incomplete. Try again.'
       render :new
-      flash[:notice] = 'Fill in all fields before submitting!'
     end
   end
 
