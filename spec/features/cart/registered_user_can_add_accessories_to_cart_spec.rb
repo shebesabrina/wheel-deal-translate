@@ -17,6 +17,7 @@ describe 'Unregistered user index page' do
       # expect(page).to have_content(accessory.thumbnail)
       expect(Accessory.all.count).to eq(1)
       expect(page).to have_button("Remove")
+      expect(page).to have_button("Check Out")
     end
   end
 end
@@ -35,5 +36,21 @@ describe 'Cart index page' do
 
     expect(page).to have_content("Successfully removed #{accessory.title}from your cart.")
     expect(Accessory.all.count).to eq(0)
+  end
+end
+
+describe 'Cart index page' do
+  it 'allows registered user to check out' do
+    accessory = create(:accessory)
+
+    visit accessory_path(accessory)
+
+    click_on "Add to Cart"
+
+    visit cart_path
+
+    click_on 'Check Out'
+
+    expect(page).to have_content("Successfully submitted your order totaling #{accessory.price}")
   end
 end

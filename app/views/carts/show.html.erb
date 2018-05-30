@@ -14,3 +14,6 @@
 
 <h2>Total:</h2>
 <%= number_to_currency(@cart.total_accessory_value) %>
+
+<h2>Check Out</h2>
+<%= button_to "Check Out", user_dashboard_path(current_user) %>
