@@ -16,4 +16,8 @@ class Cart
   def count_of(id)
     contents[id.to_s]
   end
+
+  def delete_accessory(id)
+    contents.delete(id.to_s)
+  end
 end

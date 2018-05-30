@@ -1,0 +1,17 @@
+<h1>Cart</h1>
+<ul>
+
+  <% @contents.each do |item_id, quantity| %>
+  <% item = Accessory.find(item_id) %>
+  <img src="<%= item.thumbnail %>">
+  <%= item.title %>
+  <%= number_to_currency(item.price) %>
+  <%= item.description %>
+  <%= button_to "Remove", cart_path(item_id), method: 'delete_accessory' %>
+
+  <%= quantity %>
+  <% end %>
+</ul>
+
+<h2>Total:</h2>
+<%= number_to_currency(@cart.total_count) %>

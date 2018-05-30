@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/user/:id/dashboard', to:'dashboard#show', as: :user_dashboard
   get '/bike-shop', to: 'accessories#index', as: :bike_shop
+  get '/cart', to: 'carts#show', as: :cart
 
   get '/trips-dashboard', to: 'trips#dashboard', as: :trips_dashboard
 
