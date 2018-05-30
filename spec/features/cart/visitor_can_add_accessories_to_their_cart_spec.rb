@@ -21,7 +21,7 @@ describe 'Visitor index page' do
     accessory = create(:accessory, title: "Pizza Cat 1", id: 1)
 
     visit '/bike-shop'
-
+    
     within first("div.accessories") do
       click_on "Add to Cart"
     end
