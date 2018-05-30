@@ -15,27 +15,29 @@ class Admin::TripsController < Admin::BaseController
 
   def destroy
     @trip.destroy
-    redirect_to trips_path, notice: 'Trip was successfully destroyed.'
+    flash[:notice] = 'Trip was successfully destroyed.'
+    redirect_to trips_path
   end
 
   def update
     if @trip.update(trip_params)
-      redirect_to trip_path(@trip), notice: 'Trip was successfully updated.'
+      flash[:notice] = 'Trip was successfully updated.'
+      redirect_to trip_path(@trip)
     else
-      render :edit
       flash[:notice] = 'Fill in all fields before submitting!'
+      render :edit
     end
   end
 
   def create
     @admin = current_user
-    @trip = @admin.trips.create(trip_params)
+    @trip = Trip.create(trip_params)
     if @trip.save
-      redirect_to admin_trips_path
       flash[:notice] = 'Trip was successfully created.'
+      redirect_to trip_path(@trip)
     else
-      render :new
       flash[:notice] = 'Fill in all fields before submitting!'
+      render :new
     end
   end
 
@@ -47,7 +49,7 @@ class Admin::TripsController < Admin::BaseController
 
     def trip_params
       params.require(:trip).permit(:duration, :start_date, :end_date,
-                                   :start_station, :end_station, :bike_id,
+                                   :start_station_id, :end_station_id, :bike_id,
                                    :subscription_type, :zip_code)
     end
 end
