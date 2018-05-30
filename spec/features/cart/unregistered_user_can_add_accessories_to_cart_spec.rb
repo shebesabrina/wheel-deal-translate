@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Unregistered user index page' do
   describe 'allows user to add items to cart' do
-    it 'displays login when user checks out' do
+    it 'displays contents in cart' do
       accessory = create(:accessory)
 
       visit accessory_path(accessory)
@@ -18,5 +18,22 @@ describe 'Unregistered user index page' do
       expect(Accessory.all.count).to eq(1)
       expect(page).to have_button("Remove")
     end
+  end
+end
+
+describe 'Cart index page' do
+  it 'allows user to delete accessory' do
+    accessory = create(:accessory)
+
+    visit accessory_path(accessory)
+
+    click_on "Add to Cart"
+
+    visit cart_path
+
+    click_on 'Remove'
+
+    expect(page).to have_content("Successfully removed #{accessory.title}from your cart.")
+    expect(Accessory.all.count).to eq(0)
   end
 end

@@ -2,16 +2,18 @@
 <% content_for :visitor do %>
   <%= link_to "Create Account", new_user_path %>
   <%= link_to "I already have an account", login_path %>
+  <%= link_to "Cart", cart_path %>
+  <%= link_to "Bike Shop", bike_shop_path %>
 <% end %>
 
 <% content_for :user do %>
 <div class="user-nav">
   <% if !current_user.nil? %>
   <%= link_to "Home", root_path %>
-  <%= link_to "Bike Shop", bike_shop_path %>
+  <%= link_to "Cart", cart_path %>
   <%= link_to "Log Out", logout_path %>
   <%= link_to "Account", user_path(current_user) %>
-  <%= link_to "Cart", cart_path %>
+
   <% if !current_user.admin? %>
   <%= "Logged in as: #{current_user.username}" %>
   <% else %>

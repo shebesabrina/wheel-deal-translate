@@ -5,9 +5,10 @@
   <% item = Accessory.find(item_id) %>
   <img><%= image_tag(item.thumbnail) %></img>
   <h3>Accessory: <%= item.title %></h3>
-  <h4>Price: <%= number_to_currency(item.price) %></h4>
+  <h4>Price: <%= number_to_currency(quantity * item.price) %></h4>
   <h4>Quantity: <%= quantity %></h4>
-  <%= button_to "Remove", cart_path(item_id), method: 'delete_accessory' %>
+  <%= button_to "Remove", edit_cart_path(item_id), :data => {:confirm => "You sure?", :method => "delete"} %>
+
   <% end %>
 </ul>
 

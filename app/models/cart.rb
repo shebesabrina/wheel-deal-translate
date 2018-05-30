@@ -10,23 +10,26 @@ class Cart
   end
 
   def add_cart(id)
-    contents[id.to_s] = contents[id.to_s] + 1
+    @contents[id.to_s] = @contents[id.to_s] + 1
   end
 
   def count_of(id)
-    contents[id.to_s]
+    @contents[id.to_s]
+  end
+
+  def subtotal(id)
+    @contents[id.to_s] * total_count
   end
 
   def total_accessory_value
     values = []
-    contents.each do |key, value|
+    @contents.each do |key, value|
       values << Accessory.find(key).price * value
     end
     values.sum
   end
 
   def delete_accessory(id)
-    binding.pry
-    contents.delete(id.to_s)
+    @contents.delete(id.to_s)
   end
 end
