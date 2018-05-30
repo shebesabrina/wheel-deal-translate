@@ -13,11 +13,10 @@ describe 'Unregistered user index page' do
 # save_and_open_page
       expect(current_path).to eq(cart_path)
       expect(page).to have_content(accessory.title)
-      expect(page).to have_content(accessory.description)
       expect(page).to have_content(accessory.price)
       # expect(page).to have_content(accessory.thumbnail)
-      expect(cart.total_count).to eq(1)
-      expect(page).to have_content("Remove")
+      expect(Accessory.all.count).to eq(1)
+      expect(page).to have_button("Remove")
     end
   end
 end

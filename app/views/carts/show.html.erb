@@ -4,12 +4,10 @@
   <% @contents.each do |item_id, quantity| %>
   <% item = Accessory.find(item_id) %>
   <img><%= image_tag(item.thumbnail) %></img>
-  <%= item.title %>
-  <%= number_to_currency(item.price) %>
-  <%= quantity %>
-  <%= item.description %>
+  <h3>Accessory: <%= item.title %></h3>
+  <h4>Price: <%= number_to_currency(item.price) %></h4>
+  <h4>Quantity: <%= quantity %></h4>
   <%= button_to "Remove", cart_path(item_id), method: 'delete_accessory' %>
-
   <% end %>
 </ul>
 
