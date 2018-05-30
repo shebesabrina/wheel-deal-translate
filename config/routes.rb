@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   resources :accessories
 
   namespace :admin do
-    resources :accessories, only: [:index]
+    resources :bike_shop, only: [:index, :new]
   end
 end
