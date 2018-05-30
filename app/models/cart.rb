@@ -26,6 +26,7 @@ class Cart
   end
 
   def delete_accessory(id)
+    binding.pry
     contents.delete(id.to_s)
   end
 end

@@ -8,6 +8,7 @@
 <div class="user-nav">
   <% if !current_user.nil? %>
   <%= link_to "Home", root_path %>
+  <%= link_to "Bike Shop", bike_shop_path %>
   <%= link_to "Log Out", logout_path %>
   <%= link_to "Account", user_path(current_user) %>
   <%= link_to "Cart", cart_path %>
