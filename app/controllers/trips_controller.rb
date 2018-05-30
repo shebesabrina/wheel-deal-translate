@@ -36,10 +36,4 @@ class TripsController < ApplicationController
     def set_trip
       @trip = Trip.find(params[:id])
     end
-
-    def idea_params
-      params.require(:idea).permit(:duration, :start_date, :end_date,
-                                   :start_station, :end_station, :bike_id,
-                                   :subscription_type, :zip_code)
-    end
 end
