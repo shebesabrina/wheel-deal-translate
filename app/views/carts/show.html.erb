@@ -3,15 +3,15 @@
 
   <% @contents.each do |item_id, quantity| %>
   <% item = Accessory.find(item_id) %>
-  <img src="<%= item.thumbnail %>">
+  <img><%= image_tag(item.thumbnail) %></img>
   <%= item.title %>
   <%= number_to_currency(item.price) %>
+  <%= quantity %>
   <%= item.description %>
   <%= button_to "Remove", cart_path(item_id), method: 'delete_accessory' %>
 
-  <%= quantity %>
   <% end %>
 </ul>
 
 <h2>Total:</h2>
-<%= number_to_currency(@cart.total_count) %>
+<%= number_to_currency(@cart.total_accessory_value) %>

@@ -10,20 +10,13 @@ describe 'Unregistered user index page' do
       click_on "Add to Cart"
 
       visit cart_path
-
-      click_on "Register"
-
-      expect(current_path).to eq('/users/new')
-
-      fill_in :username, with: 'John'
-      fill_in :password, with: 'password'
-
+# save_and_open_page
       expect(current_path).to eq(cart_path)
-      expect(page).to have_content(accessory.thumbnail)
       expect(page).to have_content(accessory.title)
       expect(page).to have_content(accessory.description)
       expect(page).to have_content(accessory.price)
-      expect(cart.total_count).to eq(10)
+      # expect(page).to have_content(accessory.thumbnail)
+      expect(cart.total_count).to eq(1)
       expect(page).to have_content("Remove")
     end
   end
