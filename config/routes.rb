@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   resources :carts, except: [:index]
   resources :stations, only: [:index]
   get '/station/:station_name', to: 'stations#show', as: :station
+
+  resources :carts, except: [:index]
+
   resources :trips, only: [:show, :index]
+  resources :accessories, only: [:show, :index]
+
   resources :accessories
 
   resources :users
