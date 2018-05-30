@@ -40,7 +40,7 @@ describe 'visitor' do
 
       visit root_path
 
-      click_on 'Register'
+      click_on 'Create Account'
 
       expect(current_path).to eq(new_user_path)
 
