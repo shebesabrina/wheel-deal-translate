@@ -1,0 +1,6 @@
+<h1>Create a new trip!</h1>
+<p>* required fields</p>
+
+<%= render 'form', trip: @trip, user: current_user %>
+
+<%= link_to 'Cancel to Index', trips_path %>

@@ -4,19 +4,14 @@
     <title>BikeShare</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
-
     <% flash.each do |type, message| %>
     <%= content_tag :div, message, class: type %>
     <% end %>
-
     <p>Cart: <%= @cart.total_count %></p>
-
     <container>
      <% if current_user.nil? %>
        <% render 'layouts/navbar' %>
@@ -28,9 +23,7 @@
          <%= yield :admin %>
        <% end %>
      <% end %>
-     <div id="notice"><%= notice %></div>
      <%= yield %>
    </container>
-
   </body>
 </html>
