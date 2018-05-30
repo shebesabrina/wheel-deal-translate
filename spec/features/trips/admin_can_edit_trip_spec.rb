@@ -23,7 +23,7 @@ describe 'As an admin user' do
       new_bike_id = "12"
       new_subscription_type = 'Subscriber'
       new_zip_code = "123456"
-      error = "Fill in all fields before submitting!"
+      error = "Fill in all fields before submitting, or ensure Station ID is valid!"
 
       visit trips_path
 

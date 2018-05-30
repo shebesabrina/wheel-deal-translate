@@ -8,6 +8,7 @@
       <th>Edit</th>
       <th>Delete</th>
       <% end %>
+      <th>Trip ID</th>
       <th>Duration</th>
       <th>Start Date</th>
       <th>Start Station</th>
@@ -25,6 +26,7 @@
         <td><%= link_to "Edit", edit_admin_trip_path(trip) %></td>
         <td><%= link_to "Delete", admin_trip_path(trip), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+        <td><%= link_to trip.id, trip_path(trip) %></td>
         <td><%= trip.duration %></td>
         <td><%= trip.start_date %></td>
         <td><%= trip.start_station.name %></td>

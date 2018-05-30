@@ -35,12 +35,12 @@ describe 'visitor' do
   end
 
   context 'fills out registration form' do
-    it 'should make a user account successfully and redirect to user page' do
+    it 'should make a user account successfully and redirect to dashboard page' do
       username = 'sabrina1'
 
       visit root_path
 
-      click_on 'Register'
+      click_on 'Create Account'
 
       expect(current_path).to eq(new_user_path)
 
@@ -50,7 +50,7 @@ describe 'visitor' do
 
       click_on 'Create User'
 
-      expect(current_path).to eq(user_path(User.last))
+      expect(current_path).to eq(user_dashboard_path(User.last.id))
       expect(page).to have_content(username)
     end
 

@@ -18,7 +18,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:notice] = 'Trip was successfully updated.'
       redirect_to trip_path(@trip)
     else
-      flash[:notice] = 'Fill in all fields before submitting!'
+      flash[:notice] = 'Fill in all fields before submitting, or ensure Station ID is valid!'
       render :edit
     end
   end
@@ -30,7 +30,7 @@ class Admin::TripsController < Admin::BaseController
       flash[:notice] = 'Trip was successfully created.'
       redirect_to trip_path(@trip)
     else
-      flash[:notice] = 'Fill in all fields before submitting!'
+      flash[:notice] = 'Fill in all require fields, and make sure your Station ID is valid!'
       render :new
     end
   end

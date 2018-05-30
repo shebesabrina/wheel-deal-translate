@@ -1,7 +1,10 @@
 <nav>
   <% content_for :visitor do %>
-    <%= link_to "Register", new_user_path %>
-    <%= link_to "Log In", login_path %>
+  <%= link_to "Log In", login_path %>
+    <%= link_to "Create Account", new_user_path %>
+    <%= link_to "Trips", trips_path %>
+    <%= link_to "Stations", stations_path %>
+    <%= link_to "Accessories", accessories_path %>
   <% end %>
 
   <% content_for :user do %>

@@ -1,6 +1,7 @@
-<h1>Edit trip from: <%= @trip.start_station.name %></h1>
+<h1>Edit Trip</h1>
+
 <p>* required fields</p>
 
 <%= render 'form', trip: @trip, user: current_user %>
 
-<%= link_to "Back to trip from #{@trip.start_station.name}" , trip_path(@trip) %> |
+<%= link_to "Back to Trip" , trip_path(@trip) %> |
