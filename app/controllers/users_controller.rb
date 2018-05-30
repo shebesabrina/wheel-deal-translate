@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  def show; end
+  def show
+    not_found unless current_user?
+  end
 
   def edit; end
 
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to user_dashboard_path(@user)
     else
       flash[:notice] = 'That username is taken, or information submitted was incomplete. Try again.'
       render :new
@@ -21,10 +23,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'User was successfully updated.'
+    @user.update(user_params)
+    if @user.update_attributes(user_params)
+      redirect_to user_dashboard_path(@user), notice: 'User was successfully updated.'
     else
-      render :edit, flash[:notice] = 'Fill in all fields before submitting!'
+      flash[:notice] = 'Please make sure your passwords match!'
+      render :edit
     end
   end
 
