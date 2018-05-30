@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index', as: :dashboard
   get '/trips-dashboard', to: 'trips#dashboard', as: :trips_dashboard
   get '/user/:id/dashboard', to:'dashboard#show', as: :user_dashboard
+  get '/cart', to: 'carts#show', as: :cart
 
   resources :carts, except: [:index]
   resources :stations, only: [:index]
