@@ -1,6 +1,7 @@
 describe 'As an admin user' do
   describe 'I create a trip from the index page' do
     it 'shows a success message and successfully creates the trip' do
+      error = "Fill in all fields before submitting!"
       station1 = Station.create(name: 'Fort Collins Downtown', dock_count: 5, city: "Fort Collins")
       station2 = Station.create(name: 'Blake St', dock_count: 10, city: "Denver")
       name1 = 'john316'
@@ -21,6 +22,9 @@ describe 'As an admin user' do
 
       expect(current_path).to eq(new_admin_trip_path)
       expect(page).to have_content('Create a new trip!')
+
+      click_on 'Create Trip'
+      expect(page).to have_content(error)
 
       fill_in 'trip[duration]', with: duration
       fill_in 'trip[start_date]', with: start_date

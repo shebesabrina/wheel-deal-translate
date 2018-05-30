@@ -23,6 +23,7 @@ describe 'As an admin user' do
       new_bike_id = "12"
       new_subscription_type = 'Subscriber'
       new_zip_code = "123456"
+      error = "Fill in all fields before submitting!"
 
       visit trips_path
 
@@ -31,10 +32,12 @@ describe 'As an admin user' do
       expect(current_path).to eq(edit_admin_trip_path(trip))
 
       visit trip_path(trip)
-
       expect(page).to have_content("Trip to #{trip.end_station.name} from #{trip.start_station.name}")
 
       click_on 'Edit'
+      fill_in 'trip[duration]', with: ''
+      click_on 'Update Trip'
+      expect(page).to have_content(error)
 
       fill_in 'trip[duration]', with: new_duration
       fill_in 'trip[start_date]', with: new_start_date

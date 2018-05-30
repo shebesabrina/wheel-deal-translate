@@ -1,16 +1,10 @@
 class Admin::TripsController < Admin::BaseController
-  before_action :set_admin_trip, only: [:show, :edit, :update, :destroy]
-
-  def show; end
+  before_action :set_admin_trip, only: [:edit, :update, :destroy]
 
   def edit; end
 
   def new
     @trip = Trip.new
-  end
-
-  def index
-    @trips = Trip.all
   end
 
   def destroy
