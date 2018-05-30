@@ -3,11 +3,19 @@ class CartsController < ApplicationController
 
   def create
     accessory = Accessory.find(params[:id])
-    session[:cart] ||= Hash.new(0)
-    #init with a 0 value, otherwise you receive nil addition errors on the second add
-    cart_add_count = session[:cart][accessory.id.to_s] ||= 0
-    session[:cart][accessory.id.to_s] = cart_add_count + 1
-    flash[:notice] = "Added #{session[:cart][accessory.id.to_s]} #{accessory.title} to your cart."
+    @cart.add_cart(params[:id])
+    session[:cart] = @cart.contents
+    flash[:notice] = "Added #{@cart.count_of(accessory.id)} #{accessory.title} to your cart."
+
     redirect_to request.referrer
+  end
+
+  def show
+  end
+
+  def destroy
+    @cart.delete_accessory(params[:id])
+
+    redirect_to cart_path
   end
 end
