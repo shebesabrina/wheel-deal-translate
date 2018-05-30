@@ -1,8 +1,9 @@
 <ul>
-  <li><% @accessory.thumbnail %></li>
-  <li><img src="bike_horse.jpg" alt="Bike Horse" ></li>
-  <li><%= @accessory.title %></li>
+
+
+  <img><%= image_tag(@accessory.thumbnail) %></img>
+  <h3>Accessory: <%= @accessory.title  %></h3>
+  <h4>Price: <%= number_to_currency(@accessory.price) %></h4>
   <li><%= @accessory.description %></li>
-  <li><%= @accessory.price %></li>
   <%= button_to "Add to Cart", carts_path(id: @accessory.id), class: "btn btn-danger" %>
 </ul>
