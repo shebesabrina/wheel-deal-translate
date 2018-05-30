@@ -23,7 +23,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    @user.update(user_params)
+    if @user.update_attributes(user_params)
       redirect_to user_dashboard_path(@user), notice: 'User was successfully updated.'
     else
       flash[:notice] = 'Please make sure your passwords match!'
