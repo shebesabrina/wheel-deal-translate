@@ -47,7 +47,8 @@ class StationsController < ApplicationController
   end
 
   def destroy
-    station = Station.find(params[:id])
+    station = Station.find(station_params)
+    binding.pry
     station.destroy
 
     flash[:success] = "#{station.name} was successfully deleted!"

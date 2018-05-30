@@ -3,11 +3,6 @@ class Station < ApplicationRecord
 
   has_many :trips, dependent: :nullify
 
-
-
-
-
-
   def started_at
     Trip.where(start_station_id: id).count
   end 
@@ -17,30 +12,33 @@ class Station < ApplicationRecord
   end 
 
   def popular_end_station
-    return "None" if Trip.all == []
-    trip = Trip.where(start_station_id: id).group(:end_station_id).count.max.first
-    Station.find(trip).name
+    trip = Trip.where(start_station_id: id).group(:end_station_id).count.max
+    return "None" if trip == nil
+    Station.find(trip.first).name
   end
 
   def popular_start_station
-    return "None" if Trip.all == []
-    trip = Trip.where(end_station_id: id).group(:start_station_id).count.max.first
-    Station.find(trip).name
+    trip = Trip.where(end_station_id: id).group(:start_station_id).count.max
+    return "None" if trip == nil
+    Station.find(trip.first).name
   end
 
   def popular_date
-    return "None" if Trip.all == []
-    Trip.where(start_station_id: id).group(:start_date).count.max.first
+    trip = Trip.where(start_station_id: id).group(:start_date).count.max
+    return "None" if trip == nil
+    trip.first
   end
 
   def popular_zip
-    return "None" if Trip.all == []
-    Trip.where(start_station_id: id).group(:zip_code).count.max.first
+    trip = Trip.where(start_station_id: id).group(:zip_code).count.max
+    return "None" if trip == nil
+    trip.first
   end
 
   def popular_bike
-    return "None" if Trip.all == []
-    Trip.where(start_station_id: id).group(:bike_id).count.max.first
+    trip = Trip.where(start_station_id: id).group(:bike_id).count.max
+    return "None" if trip == nil
+    trip.first
   end
 
   def self.total_count

@@ -14,7 +14,7 @@ describe 'admin' do
       fill_in 'station[installation_date]', with: date
 
       click_on 'Create Station'
-      save_and_open_page
+
       expect(current_path).to eq("/station/#{station.name}")
     end
   end
