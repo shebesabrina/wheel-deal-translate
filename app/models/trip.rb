@@ -7,8 +7,8 @@ class Trip < ApplicationRecord
             :bike_id,
             :subscription_type, presence: true
 
-  belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
-  belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
+  belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id", optional: true
+  belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id", optional: true
 
   def self.average_trip_duration
     Trip.average(:duration).to_i

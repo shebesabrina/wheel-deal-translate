@@ -17,8 +17,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :new, :create]
   resources :carts, except: [:index]
 
-  resources :stations, only: [:index]
-  get '/station/:station_name', to: 'stations#show', as: :station
+  resources :stations, except: [:show]
+  get '/station/:name', to: 'stations#show'
+  get '/stations-dashboard', to: 'stations#dashboard', as: :stations_dashboard
 
   resources :trips, only: [:show, :index]
 
