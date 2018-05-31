@@ -16,4 +16,3 @@
 <%= number_to_currency(@cart.total_accessory_value) %>
 
 <h2>Check Out</h2>
-<%= button_to "Remove", edit_cart_path(item_id), :data => {:confirm => "You sure?", :method => "delete"} %>
