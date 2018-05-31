@@ -7,7 +7,7 @@
   <h3>Accessory: <%= item.title %></h3>
   <h4>Price: <%= number_to_currency(quantity * item.price) %></h4>
   <h4>Quantity: <%= quantity %></h4>
-  <%= button_to "Remove", edit_cart_path(item_id), :data => {:confirm => "You sure?", :method => "delete"} %>
+  <%= button_to "Remove", cart_destroy_path(item_id), :data => {:confirm => "You sure?"}, :method => "delete" %>
 
   <% end %>
 </ul>
@@ -16,4 +16,3 @@
 <%= number_to_currency(@cart.total_accessory_value) %>
 
 <h2>Check Out</h2>
-<%= button_to "Check Out", user_dashboard_path(current_user) %>

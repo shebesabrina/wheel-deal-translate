@@ -10,7 +10,11 @@ class Cart
   end
 
   def add_cart(id)
-    @contents[id.to_s] = @contents[id.to_s] + 1
+    if @contents[id] == nil
+      @contents[id] = 1
+    else
+    @contents[id] += 1
+    end
   end
 
   def count_of(id)
