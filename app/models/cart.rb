@@ -10,10 +10,10 @@ class Cart
   end
 
   def add_cart(id)
-    if @contents[id] == nil
-      @contents[id] = 1
+    if @contents[id]
+      @contents[id] += 1
     else
-    @contents[id] += 1
+    @contents[id] = 1
     end
   end
 
