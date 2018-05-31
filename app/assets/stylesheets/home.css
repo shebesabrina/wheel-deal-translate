@@ -1,5 +1,5 @@
 #home_background {
-	background-image: url("<%= asset_path("streamer.jpg") %>");
+	/* background-image: url("<%= asset_path("streamer") %>"); */
 	background-size: cover;
 	width: 100vw;
 	height: 100vh;
