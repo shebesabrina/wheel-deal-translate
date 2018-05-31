@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'date'
 
 describe 'registered user' do
   context 'visits stations show page' do
@@ -19,8 +20,8 @@ describe 'registered user' do
     it 'should see a list of stations with all attributes' do
       user = User.create(username: "penelope", password: "boom", role: 0)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      
-      station = Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
+      date = Date.strptime("6/15/2012", '%m/%d/%Y')
+      station = Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins", installation_date: date)
       station2 = Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
       Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: station.id, end_date: '8/29/2013 14:14', end_station_id: 2, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
       Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: station.id, end_date: '8/29/2013 14:14', end_station_id: 1, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
@@ -30,7 +31,7 @@ describe 'registered user' do
       expect(page).to have_content(station.name)
       expect(page).to have_content(station.dock_count)
       expect(page).to have_content(station.city)
-      expect(page).to have_content(station.created_at)
+      expect(page).to have_content(station.installation_date)
     end
 
     it 'should see the number of rides started at this station' do

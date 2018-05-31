@@ -6,7 +6,7 @@
 <ul>
   <li>Dock Count: <%= @station.dock_count %></li>
   <li>City: <%= @station.city %></li>
-  <li>Installation Date: <%= @station.created_at %></li>
+  <li>Installation Date: <%= @station.installation_date %></li>
   <% content_for :user do %>
     <li>Number of Rides Started at this Station: <%= @station.started_at %></li>
     <li>Number of Rides Ended at this Station: <%= @station.ended_at %></li>

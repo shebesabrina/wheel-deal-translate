@@ -3,8 +3,7 @@ class Station < ApplicationRecord
 
   has_many :trips, foreign_key: :start_station_id, dependent: :destroy
   has_many :trips, foreign_key: :end_station_id, dependent: :destroy
-  # foreign_key: "end_station_id"
-  #  foreign_key: "start_station_id"
+
 
   def started_at
     Trip.where(start_station_id: id).count

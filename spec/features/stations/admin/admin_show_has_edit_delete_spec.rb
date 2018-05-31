@@ -20,7 +20,7 @@ describe 'visitor' do
       expect(page).to have_content(station.installation_date)
     end
 
-    xit 'should see an edit button next to each station' do
+    it 'should see an edit button next to each station' do
       admin = User.create(username: "penelope", password: "boom", role: 1)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -36,7 +36,7 @@ describe 'visitor' do
       expect(current_path).to eq(edit_station_path(station))
     end
 
-    xit 'should see an delete button next to each station' do
+    it 'should see an delete button next to each station' do
       admin = User.create(username: "penelope", password: "boom", role: 1)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

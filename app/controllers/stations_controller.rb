@@ -40,7 +40,7 @@ class StationsController < ApplicationController
     @station.update(station_params)
     if @station.save
       flash[:success] = "#{@station.name} updated!"
-      redirect_to station_path(@station)
+      redirect_to "/station/#{@station.name}"
     else
       render :edit
     end
