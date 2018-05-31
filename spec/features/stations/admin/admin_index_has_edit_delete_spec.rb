@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'visitor' do
   context 'admin stations index page' do
-    xit 'should see a list of stations with all attributes' do
+    it 'should see a list of stations with all attributes' do
       admin = User.create(username: "penelope", password: "boom", role: 1)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -27,7 +27,7 @@ describe 'visitor' do
       expect(page).to have_content(station3.installation_date)
     end
 
-    xit 'should see an edit button next to each station' do
+    it 'should see an edit button next to each station' do
       admin = User.create(username: "penelope", password: "boom", role: 1)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -42,7 +42,28 @@ describe 'visitor' do
       expect(current_path).to eq(edit_station_path(station1))
     end
 
-    xit 'should see an delete button next to each station' do
+    it 'should update and redirect to station show page' do
+      station = Station.create(name: 'China', dock_count: 5, city: "Fort Collins")
+      date = Date.strptime("6/15/2012", '%m/%d/%Y')
+
+      visit edit_station_path(station)
+
+      fill_in 'station[name]', with: 'LaFox'
+      fill_in 'station[dock_count]', with: '11'
+      fill_in 'station[city]', with: 'Campton Hills'
+      fill_in 'station[installation_date]', with: date
+      save_and_open_page
+      click_button 'Update Station'
+
+      expect(current_path).to eq("/station/LaFox")
+
+      expect(page).to have_content('LaFox')
+      expect(page).to have_content('Campton')
+      expect(page).to have_content('11')
+      expect(page).to have_content(date)
+    end
+
+    it 'should see an delete button next to each station' do
       admin = User.create(username: "penelope", password: "boom", role: 1)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
