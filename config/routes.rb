@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   root to: 'dashboard#index'
   get '/dashboard', to: 'dashboard#index', as: :dashboard
   get '/user/:id/dashboard', to:'dashboard#show', as: :user_dashboard
+
   get '/trips-dashboard', to: 'trips#dashboard', as: :trips_dashboard
   get '/bike-shop', to: 'accessories#index', as: :bike_shop
+
   get '/cart', to: 'carts#show', as: :cart
   delete '/cart/:id', to: 'carts#destroy', as: :cart_destroy
 
