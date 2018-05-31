@@ -11,9 +11,11 @@ class CartsController < ApplicationController
   end
 
   def show
+    @contents = @cart.contents
   end
 
   def destroy
+
     @cart.delete_accessory(params[:id])
 
     redirect_to cart_path

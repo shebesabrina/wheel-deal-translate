@@ -10,7 +10,7 @@ describe 'Unregistered user index page' do
       click_on "Add to Cart"
 
       visit cart_path
-# save_and_open_page
+
       expect(current_path).to eq(cart_path)
       expect(page).to have_content(accessory.title)
       expect(page).to have_content(accessory.price)
