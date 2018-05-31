@@ -54,4 +54,16 @@ class Trip < ApplicationRecord
     type_percents = Trip.subscription_type_percents
     Trip.subscription_type_counts.values.sort.zip(type_percents)
   end
+
+  def self.start_station_names
+    joins(:start_station).pluck(:name).uniq.sort
+  end
+
+  def self.end_station_names
+    joins(:end_station).pluck(:name).uniq.sort
+  end
+
+  def self.subscription_types
+    pluck(:subscription_type).uniq
+  end
 end
