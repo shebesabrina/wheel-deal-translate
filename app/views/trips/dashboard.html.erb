@@ -6,6 +6,8 @@
       <th>Average Ride Duration</th>
       <th>Longest Ride</th>
       <th>Shortest Ride</th>
+      <th>Most Popular Starting Station</th>
+      <th>Most Popular Ending Station</th>
       <th>Most Ridden Bike</th>
       <th>Least Ridden Bike</th>
       <th>Date of Most Trips</th>
@@ -14,9 +16,11 @@
     </thead>
       <tbody>
       <tr>
-        <td><%= @average_trip_duration %></td>
-        <td><%= @longest_ride %></td>
-        <td><%= @shortest_ride %></td>
+        <td><%= @average_trip_duration %> minutes</td>
+        <td><%= @longest_ride %> minutes</td>
+        <td><%= @shortest_ride %> minutes</td>
+        <td><%= @most_popular_start_station %> Station</td>
+        <td><%= @most_popular_end_station %> Station</td>
         <td><%= @most_ridden_bike %> (<%= @most_ridden_bike_count %>)</td>
         <td><%= @least_ridden_bike %> (<%= @least_ridden_bike_count %>)</td>
         <td><%= @most_popular_date %> (<%= @most_popular_date_count %>)</td>

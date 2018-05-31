@@ -35,39 +35,59 @@ RSpec.describe Trip, type: :model do
     it 'Trip#average_trip_duration' do
       expect(Trip.average_trip_duration).to eq(46)
     end
+
     it 'Trip#longest_duration' do
       expect(Trip.longest_duration).to eq(60)
     end
+
     it 'Trip#shortest_duration' do
       expect(Trip.shortest_duration).to eq(20)
     end
+
+    it 'Trip#most_popular_start_station' do
+      expect(Trip.most_popular_start_station).to eq('Denver')
+    end
+
+    it 'Trip#most_popular_end_station' do
+      expect(Trip.most_popular_end_station).to eq('Dallas')
+    end
+
     it 'Trip#most_ridden_bike' do
       expect(Trip.most_ridden_bike).to eq([520, 10])
     end
+
     it 'Trip#least_ridden_bike' do
       expect(Trip.least_ridden_bike).to eq([55, 5])
     end
+
     it 'Trip#most_popular_date' do
       expect(Trip.most_popular_date).to eq(['8/29/2013 14:13', 10])
     end
+
     it 'Trip#least_popular_date' do
       expect(Trip.least_popular_date).to eq(['7/15/2013 10:13', 5])
     end
+
     it 'Trip#subscription_type_percents' do
       expect(Trip.subscription_type_percents).to eq([['Customer', 33.33], ['Subscriber', 66.67]])
     end
+
     it 'Trip#subscription_type_counts' do
       expect(Trip.subscription_type_counts).to eq('Subscriber' => 10, 'Customer' => 5)
     end
+
     it 'Trip#subscription_type_breakdown' do
       expect(Trip.subscription_type_breakdown).to eq([[5, ['Customer', 33.33]], [10, ['Subscriber', 66.67]]])
     end
+
     it 'Trip#start_station_names' do
       expect(Trip.start_station_names).to eq(['Denver'])
     end
+
     it 'Trip#end_station_names' do
       expect(Trip.end_station_names).to eq(['Dallas'])
     end
+
     it 'Trip#subscription_types' do
       expect(Trip.subscription_types).to eq(['Subscriber', 'Customer'])
     end
