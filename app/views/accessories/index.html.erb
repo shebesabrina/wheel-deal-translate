@@ -2,6 +2,7 @@
     <div class="accessories">
     <%= accessory.title %>
     <%= button_to "Add to Cart", carts_path(id: accessory.id), class: "btn btn-danger" %>
+    <%= link_to "View Details", accessory_path(accessory) %>
     </div>
   <% end %>
 <%= will_paginate @accessories %>
