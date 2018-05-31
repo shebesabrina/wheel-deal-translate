@@ -10,7 +10,7 @@ describe 'visitor' do
       station2 = Station.create(name: 'Blake St', dock_count: 10, city: "Denver")
       station3 = Station.create(name: 'Larimer St', dock_count: 2, city: "Denver")
 
-      
+
       visit stations_path
 
       expect(page).to have_content(station1.name)
@@ -52,7 +52,6 @@ describe 'visitor' do
       fill_in 'station[dock_count]', with: '11'
       fill_in 'station[city]', with: 'Campton Hills'
       fill_in 'station[installation_date]', with: date
-      save_and_open_page
       click_button 'Update Station'
 
       expect(current_path).to eq("/station/LaFox")

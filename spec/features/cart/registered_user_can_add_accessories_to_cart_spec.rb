@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Unregistered user index page' do
   describe 'allows user to add items to cart' do
-    xit 'displays contents in cart' do
+    it 'displays contents in cart' do
       accessory = create(:accessory)
 
       visit accessory_path(accessory)
@@ -10,7 +10,7 @@ describe 'Unregistered user index page' do
       click_on "Add to Cart"
 
       visit cart_path
-# save_and_open_page
+
       expect(current_path).to eq(cart_path)
       expect(page).to have_content(accessory.title)
       expect(page).to have_content(accessory.price)
@@ -23,7 +23,7 @@ describe 'Unregistered user index page' do
 end
 
 describe 'Cart index page' do
-  xit 'allows user to delete accessory' do
+  it 'allows user to delete accessory' do
     accessory = create(:accessory)
 
     visit accessory_path(accessory)
@@ -40,7 +40,7 @@ describe 'Cart index page' do
 end
 
 describe 'Cart index page' do
-  xit 'allows registered user to check out' do
+  it 'allows registered user to check out' do
     accessory = create(:accessory)
 
     visit accessory_path(accessory)
