@@ -6,11 +6,11 @@ class CartsController < ApplicationController
     @cart.add_cart(params[:id])
     session[:cart] = @cart.contents
     flash[:notice] = "Added #{@cart.count_of(accessory.id)} #{accessory.title} to your cart."
-
     redirect_to request.referrer
   end
 
   def show
+    @contents = @cart.contents
   end
 
   def destroy

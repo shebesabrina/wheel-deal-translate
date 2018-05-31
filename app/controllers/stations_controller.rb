@@ -47,8 +47,11 @@ class StationsController < ApplicationController
   end
 
   def destroy
-    station = Station.find(station_params)
-    binding.pry
+    station = Station.find(params[:id])
+    trips = Trip.where("end_station_id=? OR start_station_id=?", station.id, station.id)
+    trips.each do |trip|
+      trip.destroy
+    end
     station.destroy
 
     flash[:success] = "#{station.name} was successfully deleted!"
