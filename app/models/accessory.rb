@@ -1,3 +1,3 @@
 class Accessory < ApplicationRecord
-  validates :price, :title, :description, :thumbnail, presence: true
+  validates :price, :title, :description, presence: true
 end
