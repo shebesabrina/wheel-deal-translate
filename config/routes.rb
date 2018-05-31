@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/user/:id/dashboard', to:'dashboard#show', as: :user_dashboard
   get '/bike-shop', to: 'accessories#index', as: :bike_shop
   get '/cart', to: 'carts#show', as: :cart
+  delete '/cart/:id', to: 'carts#destroy', as: :cart_destroy
 
   get '/trips-dashboard', to: 'trips#dashboard', as: :trips_dashboard
 
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
 
 
   resources :users, only: [:show, :new, :create]
-  resources :carts, except: [:index]
+  resources :carts, only: [:create]
 
   resources :stations, only: [:index]
   get '/station/:station_name', to: 'stations#show', as: :station
