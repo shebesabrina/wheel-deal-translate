@@ -7,8 +7,10 @@ class Trip < ApplicationRecord
             :bike_id,
             :subscription_type, presence: true
 
-  belongs_to :start_station, class_name: "Station", foreign_key: "start_station_id"
-  belongs_to :end_station, class_name: "Station", foreign_key: "end_station_id"
+  belongs_to :start_station, class_name: "Station"
+  belongs_to :end_station, class_name: "Station"
+  # has_one :start_station_id, class_name: 'Station', foreign_key: 'station_id', dependent: :destroy
+  # has_one :end_station_id, class_name: 'Station', foreign_key: 'station_id', dependent: :destroy
 
   def self.average_trip_duration
     average(:duration).to_i
@@ -23,12 +25,14 @@ class Trip < ApplicationRecord
   end
 
   def self.most_popular_start_station
-    station_id = joins(:start_station).group('trips.start_station_id', 'trips.id').order('COUNT(stations.name) DESC').first.start_station_id
+    station_id = joins(:start_station).group('trips.start_station_id', 'trips.id').order
+    ('COUNT(stations.name) DESC').first.start_station_id
     Station.find(station_id).name
   end
 
   def self.most_popular_end_station
-    station_id = joins(:end_station).group('trips.end_station_id', 'trips.id').order('COUNT(stations.name) DESC').first.end_station_id
+    station_id = joins(:end_station).group('trips.end_station_id', 'trips.id').order
+    ('COUNT(stations.name) DESC').first.end_station_id
     Station.find(station_id).name
   end
 
