@@ -47,6 +47,7 @@ group :development, :test do
   gem 'active_designer'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'paperclip'
 end
 
 group :development do

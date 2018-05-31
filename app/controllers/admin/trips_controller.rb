@@ -1,7 +1,11 @@
 class Admin::TripsController < Admin::BaseController
   before_action :set_admin_trip, only: [:edit, :update, :destroy]
 
-  def edit; end
+  def edit
+    @start_station_names = Trip.start_station_names
+    @end_station_names   = Trip.end_station_names
+    @subscription_types  = Trip.subscription_types
+  end
 
   def new
     @trip = Trip.new

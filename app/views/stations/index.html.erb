@@ -2,7 +2,12 @@
 
 <% @stations.each do |station| %>
   <ul>
-    <li>Name: <%= link_to "#{station.name}", "/#{station.name}" %></li>
+    <li>Name: <%= link_to "#{station.name}", "/station/#{station.name}" %>
+    <% content_for :admin do %>
+      <%= link_to 'Edit', edit_station_path(station) %>
+      <%= link_to "Delete", station_path(station), method: "delete" %>
+    <%end%>
+    </li>
     <li>Dock Count: <%= station.dock_count %></li>
     <li>City :<%= station.city %></li>
     <li>Installation Date: <%= station.installation_date %></li>

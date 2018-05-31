@@ -27,3 +27,7 @@ end
 26.times do
   accessory = Accessory.create(title: 'Pizza Cat', description: 'Delicious!', thumbnail: 'bike_horse.jpg', price: 10 )
 end
+
+21.times do
+  accessory = Accessory.create(title: 'Pizza Cat', description: 'Delicious!', thumbnail: 'bike_horse.jpg', price: 20)
+end

@@ -1,28 +1,47 @@
 <%= form_for [:admin, @trip] do |form| %>
 
   <%= form.label :duration %>*
-  <%= form.text_field :duration %>
+  <br>
+  <%= form.text_field :duration, placeholder: "in minutes" %>
+  <br>
+  <br>
 
   <%= form.label :start_date %>*
-  <%= form.text_field :start_date %>
-
+  <br>
+  <%= date_select Date.today, prefix: :start_date %>
+  <br>
+  <br>
   <%= form.label :end_date %>*
-  <%= form.text_field :end_date %>
-
+  <br>
+  <%= date_select Date.today, prefix: :end_date %>
+  <br>
+  <br>
   <%= form.label :start_station_id %>*
-  <%= form.text_field :start_station_id %>
-
+  <br>
+  <%= form.select(:start_station_id, options_for_select(@start_station_names)) %>
+  <br>
+  <br>
   <%= form.label :end_station_id %>*
-  <%= form.text_field :end_station_id %>
-
+  <br>
+  <%= form.select(:end_station_id, options_for_select(@end_station_names)) %>
+  <br>
+  <br>
   <%= form.label :bike_id %>*
+  <br>
   <%= form.text_field :bike_id %>
-
+  <br>
+  <br>
   <%= form.label :subscription_type %>*
-  <%= form.text_field :subscription_type %>
-
+  <br>
+  <%= form.select(:subscription_type, options_for_select(@subscription_types)) %>
+  <br>
+  <br>
   <%= form.label :zip_code %>
+  <br>
   <%= form.text_field :zip_code %>
+  <br>
   <br>
   <%= form.submit %>
 <% end %>
+<br>
+<br>

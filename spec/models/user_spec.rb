@@ -6,9 +6,7 @@ describe User, type: :model do
     it { should validate_presence_of(:password) }
     it { should validate_uniqueness_of(:username) }
   end
-end
 
-describe User do
   describe "roles" do
     it "can be created as an admin" do
       admin = create(:user, role: 1)

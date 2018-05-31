@@ -12,6 +12,9 @@ class TripsController < ApplicationController
     @longest_ride          = Trip.longest_duration
     @shortest_ride         = Trip.shortest_duration
 
+    @most_popular_start_station = Trip.most_popular_start_station
+    @most_popular_end_station = Trip.most_popular_end_station
+
     most_ridden_bike_stats  = Trip.most_ridden_bike
     @most_ridden_bike       = most_ridden_bike_stats[0]
     @most_ridden_bike_count = most_ridden_bike_stats[1]

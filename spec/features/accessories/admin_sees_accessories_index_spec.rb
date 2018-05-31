@@ -9,7 +9,7 @@ describe 'User visits accessories index page' do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit admin_accessories_path
+      visit admin_bike_shop_accessories_path
 
       expect(page).to have_content('Admin Accessories')
     end
