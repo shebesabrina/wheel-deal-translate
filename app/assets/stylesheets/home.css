@@ -5,4 +5,5 @@
   height: 100vh;
   display: flex;
   text-align: center;
+  opacity: 0.5;
 }
