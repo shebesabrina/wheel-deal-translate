@@ -1,15 +1,15 @@
 class Station < ApplicationRecord
   validates_presence_of :name, :city, :dock_count, require: true
 
-  has_many :trips
+  has_many :trips, dependent: :destroy
 
   def started_at
     Trip.where(start_station_id: id).count
-  end 
+  end
 
   def ended_at
     Trip.where(end_station_id: id).count
-  end 
+  end
 
   def popular_end_station
     trip = Trip.where(start_station_id: id).group(:end_station_id).count.max.first
