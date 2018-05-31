@@ -25,14 +25,12 @@ class Trip < ApplicationRecord
   end
 
   def self.most_popular_start_station
-    station_id = joins(:start_station).group('trips.start_station_id', 'trips.id').order
-    ('COUNT(stations.name) DESC').first.start_station_id
+    station_id = joins(:start_station).group('trips.start_station_id', 'trips.id').order('COUNT(stations.name) DESC').first.start_station_id
     Station.find(station_id).name
   end
 
   def self.most_popular_end_station
-    station_id = joins(:end_station).group('trips.end_station_id', 'trips.id').order
-    ('COUNT(stations.name) DESC').first.end_station_id
+    station_id = joins(:end_station).group('trips.end_station_id', 'trips.id').order('COUNT(stations.name) DESC').first.end_station_id
     Station.find(station_id).name
   end
 
