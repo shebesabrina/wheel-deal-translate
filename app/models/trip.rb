@@ -9,8 +9,6 @@ class Trip < ApplicationRecord
 
   belongs_to :start_station, class_name: "Station"
   belongs_to :end_station, class_name: "Station"
-  # has_one :start_station_id, class_name: 'Station', foreign_key: 'station_id', dependent: :destroy
-  # has_one :end_station_id, class_name: 'Station', foreign_key: 'station_id', dependent: :destroy
 
   def self.average_trip_duration
     average(:duration).to_i
