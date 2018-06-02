@@ -34,8 +34,8 @@ describe 'Cart index page' do
 
     click_on 'Remove'
 
-    expect(page).to have_content("Successfully removed #{accessory.title}from your cart.")
-    expect(Accessory.all.count).to eq(0)
+    expect(page).to have_content("Successfully removed #{accessory.title} from your cart.")
+    expect(page).to_not have_content(accessory.thumbnail)
   end
 end
 
