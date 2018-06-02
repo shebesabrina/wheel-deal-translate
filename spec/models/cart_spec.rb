@@ -10,7 +10,7 @@ RSpec.describe Cart do
   end
 
   describe "#add_accessory" do
-    it "adds an accessory to its contents" do
+    xit "adds an accessory to its contents" do
       subject.add_cart(1)
       subject.add_cart(2)
 
