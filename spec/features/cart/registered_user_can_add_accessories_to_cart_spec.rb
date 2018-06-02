@@ -14,7 +14,7 @@ describe 'Unregistered user index page' do
       expect(current_path).to eq(cart_path)
       expect(page).to have_content(accessory.title)
       expect(page).to have_content(accessory.price)
-      # expect(page).to have_content(accessory.thumbnail)
+      expect(page).to have_content(accessory.thumbnail)
       expect(Accessory.all.count).to eq(1)
       expect(page).to have_button("Remove")
       expect(page).to have_link("Check Out")

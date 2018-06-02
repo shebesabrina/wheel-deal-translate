@@ -6,7 +6,6 @@
     <%= link_to "Trips", trips_path %>
     <%= link_to "Stations", stations_path %>
     <%= link_to "Accessories", accessories_path %>
-    <%= link_to "Cart", cart_path %>
   <% end %>
 
   <% content_for :user do %>
@@ -18,12 +17,12 @@
         <%= link_to "Trips", trips_path %>
         <%= link_to "Stations", stations_path %>
         <%= link_to "Accessories", accessories_path %>
-        <%= link_to "Cart", cart_path %>
         <% if !current_user.admin? %>
           <%= "Logged in as: #{current_user.username}" %>
         <% else %>
+        <%= link_to "Create New Trip", new_admin_trip_path %>
+        <%= link_to "Create New Accesory", admin_bike_shop_accessory_new_path %>
           <%= "Logged in as Admin User: #{current_user.username} "%>
-          <%= link_to "Create New Trip", new_admin_trip_path %>
         <% end %>
       <% end %>
     </div>

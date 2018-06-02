@@ -33,9 +33,9 @@ Rails.application.routes.draw do
   resources :users
 
   namespace :admin do
-    resources :bike_shop, only: [:index]
     get '/bike-shop/new', to: 'accessories#new', as: :bike_shop_accessory_new
     post '/bike-shop/new', to: 'accessories#create', as: :bike_shop_accessories
+    get '/bike-shop', to: 'accessories#index', as: :bike_shop
   end
 
   namespace :admin do
