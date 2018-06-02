@@ -17,7 +17,7 @@ describe 'Unregistered user index page' do
       # expect(page).to have_content(accessory.thumbnail)
       expect(Accessory.all.count).to eq(1)
       expect(page).to have_button("Remove")
-      expect(page).to have_button("Check Out")
+      expect(page).to have_link("Check Out")
     end
   end
 end
