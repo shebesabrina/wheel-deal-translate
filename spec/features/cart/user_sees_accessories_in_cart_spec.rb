@@ -22,6 +22,6 @@ describe 'User cart page' do
 
     expect(page).to have_content("$60.00")
     expect(page).to have_content(accessory.title)
-    # expect(page).to have_content(accessory.thumbnail)
+    expect(page).to have_content(accessory.thumbnail)
   end
 end
