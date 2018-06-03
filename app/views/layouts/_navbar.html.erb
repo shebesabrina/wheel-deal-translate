@@ -1,12 +1,27 @@
 <nav>
-
-  <% content_for :visitor do %>
-  <%= link_to "Log In", login_path %>
-    <%= link_to "Create Account", new_user_path %>
-    <%= link_to "Trips", trips_path %>
-    <%= link_to "Stations", stations_path %>
-    <%= link_to "Accessories", accessories_path %>
+<% content_for :visitor do %>
+  <div class="header">
+  </div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <section id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li><a href="/" target="_self">Home</a></li>
+      <li><a href="/trips" target="_self">Trips</a></li>
+      <li><a href="/stations" target="_self">Stations</a></li>
+      <li><a href="/accessories" target="_self">Accessories</a></li>
+      <li></li>
+      <li><a href="/login" target="_self">Log In</a></li>
+      <li><a href="users/new" target="_self">Create Account</a></li>
+    </ul>
+  </section>
   <% end %>
+
+
 
   <% content_for :user do %>
     <div class="user-nav">
