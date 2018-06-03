@@ -1,0 +1,25 @@
+div.checkout {
+  color: white;
+  background: #7fcad0;
+  padding: 10px 20px;
+  display: block;
+  margin: 10px 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 13px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+
+div.item {
+  border: 10px;
+  border: 1px solid #000;
+  text-align: center;
+}
+
+div.cart-tracker {
+  text-align: right;
+}

@@ -1,0 +1,15 @@
+div.user-nav {
+  list-style: none;
+  background-color: #478887;
+  padding: 10px;
+  margin: 0;
+  text-align: left;
+}
+div.welcome-user {
+  text-align: center;
+  padding: 10px;
+}
+
+div.log-out {
+  text-align: right;
+}
