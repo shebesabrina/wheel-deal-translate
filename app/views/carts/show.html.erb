@@ -4,15 +4,21 @@
 
   <% @contents.each do |item_id, quantity| %>
   <div class="item">
-  <% item = Accessory.find(item_id) %>
+  <% item = @items.find(item_id) %>
   <div class='cart-image'>
     <img><%= image_tag(item.thumbnail) %></img>
   </div>
   <h3>Accessory: <%= item.title %></h3>
   <h4>Price: <%= number_to_currency(quantity * item.price) %></h4>
 
+  <h2>Quantity: </h2>
   <label for="quantity">Quantity: </label>
   <select id="quantity" name="quantity">
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5</option>
     <option value="quantity"><%= quantity %></option>
   </select>
 
