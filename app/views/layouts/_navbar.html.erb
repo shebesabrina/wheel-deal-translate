@@ -18,7 +18,11 @@
         <%= link_to "Account", user_path(current_user) %>
         <%= link_to "Trips", trips_path %>
         <%= link_to "Stations", stations_path %>
+        <% if !current_user.admin? %>
         <%= link_to "Accessories", accessories_path %>
+        <% else %>
+        <%= link_to "Accessories", admin_bike_shop_path %>
+        <% end %>
         <div class="log-out">
 
           <%= link_to "Log Out", logout_path %>

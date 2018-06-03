@@ -1,5 +1,7 @@
 class Accessory < ApplicationRecord
-  validates :price, :title, :description, :thumbnail, presence: true
+  validates :description, presence: true
+  validates_uniqueness_of :title
+  validates_numericality_of :price, :on => :create
   belongs_to :user, optional: true
   enum role:[:active, :inactive]
 end

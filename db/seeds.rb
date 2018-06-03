@@ -25,5 +25,5 @@ ENDDATE = ["8/29/2013 14:13", "8/30/2013 11:14",  "3/13/2013 11:14"]
 end
 
 26.times do
-  accessory = Accessory.create(title: 'Pizza Cat', description: 'Delicious!', thumbnail: 'bike_horse.jpg', price: 10 )
+  Accessory.create(title: 'Pizza Cat', description: 'Delicious!', thumbnail: 'bike_horse.jpg', price: 10 )
 end
