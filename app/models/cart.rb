@@ -9,12 +9,16 @@ class Cart
     @contents.values.sum
   end
 
-  def add_cart(id)
-    if @contents[id]
-      @contents[id] += 1
+  def add_item_cart(id)
+    if @contents[id.to_s].nil?
+      @contents[id.to_s] = 1
     else
-    @contents[id] = 1
+    @contents[id.to_s] += 1
     end
+  end
+
+  def reduce_item_cart(id)
+    @contents[id.to_s] -= 1
   end
 
   def count_of(id)
@@ -34,6 +38,6 @@ class Cart
   end
 
   def delete_accessory(id)
-    @contents.delete(id.to_s)
+    @contents.delete(id)
   end
 end

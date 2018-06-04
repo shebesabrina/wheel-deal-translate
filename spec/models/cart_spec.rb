@@ -11,8 +11,8 @@ RSpec.describe Cart do
 
   describe "#add_accessory" do
     xit "adds an accessory to its contents" do
-      subject.add_cart(1)
-      subject.add_cart(2)
+      subject.add_item_cart(1)
+      subject.add_item_cart(2)
 
       expect(subject.contents).to eq({"1"=>2, "2"=>3, 1=>1, 2=>1})
     end
