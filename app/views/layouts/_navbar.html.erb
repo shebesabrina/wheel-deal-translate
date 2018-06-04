@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="app/stylesheets/nav.css">
 <nav>
-<<<<<<< HEAD
 <% content_for :visitor do %>
   <div class="header">
+    <h3><%= link_to "Cart: #{@cart.total_count}", cart_path %></h3>
   </div>
   <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
   <label for="openSidebarMenu" class="sidebarIconToggle">
@@ -21,17 +21,6 @@
       <li><a href="users/new" target="_self">Create Account</a></li>
     </ul>
   </section>
-=======
-
-  <% content_for :visitor do %>
-    <div class="user-nav">
-  <%= link_to "Log In", login_path %>
-    <%= link_to "Create Account", new_user_path %>
-    <%= link_to "Trips", trips_path %>
-    <%= link_to "Stations", stations_path %>
-    <%= link_to "Accessories", accessories_path %>
-  </div>
->>>>>>> e49e96370673f96c423fb218c6c476b7633c9ccb
   <% end %>
 
 
