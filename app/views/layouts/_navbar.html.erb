@@ -1,9 +1,13 @@
-<link rel="stylesheet" href="app/stylesheets/nav.css">
 <nav>
 <% content_for :visitor do %>
-  <div class="header">
-    <h3><%= link_to "Cart: #{@cart.total_count}", cart_path %></h3>
-  </div>
+<div class="header">
+  <section class="container_head">
+    <section class="grid"></section>
+      <section class="box2">
+        <h3><%= link_to "Cart: #{@cart.total_count}", cart_path %></h3>
+      </section>
+  </section>
+</div>
   <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
   <label for="openSidebarMenu" class="sidebarIconToggle">
     <div class="spinner diagonal part-1"></div>
@@ -24,34 +28,60 @@
   <% end %>
 
 
-
-  <% content_for :user do %>
-  <div class="user-nav">
+<% content_for :user do %>
+  <div class="header">
+    <section class="container_head">
+      <section class="grid"></section>
+        <section class="box1">
+          <% if !current_user.nil? && !current_user.admin? %>
+          <span class="htext">Logged in as <%= current_user.username %></span>
+          <%end%>
+          <% if !current_user.nil? && current_user.admin? %>
+          <span class="htext">Logged in as Admin: <%= current_user.username %></span>
+          <%end%>
+        </section>
+        <section class="box2">
+          <h3><%= link_to "Cart: #{@cart.total_count}", cart_path %></h3>
+        </section>
+      </section>
+    </section>
+  </div>
+  <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+  <label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="spinner diagonal part-1"></div>
+    <div class="spinner horizontal"></div>
+    <div class="spinner diagonal part-2"></div>
+  </label>
+  <section id="sidebarMenu">
+    <ul class="sidebarMenuInner">
+      <li><a href="/" target="_self">Home</a></li>
+      <li></li>
+      <li><a href="/trips" target="_self">Trips</a></li>
+      <li><a href="/stations" target="_self">Stations</a></li>
+      <li><a href="/accessories" target="_self">Accessories</a></li>
       <% if !current_user.nil? %>
-        <%= link_to "Home", root_path %>
-        <%= link_to "Account", user_path(current_user) %>
-        <%= link_to "Trips", trips_path %>
-        <%= link_to "Stations", stations_path %>
-        <% if !current_user.admin? %>
-        <%= link_to "Accessories", accessories_path %>
-        <% else %>
-        <%= link_to "Accessories", admin_bike_shop_path %>
-        <% end %>
-        <div class="log-out">
+        <li><a href="/trips-dashboard" target="_self">Trips Dashboard</a></li>
+        <li><a href="/stations-dashboard" target="_self">Station Dashboard</a></li>
+        <li><a href="/bike-shop" target="_self">Bike Shop</a></li>
+      <%end%>
+      <li></li>
+      <% if !current_user.nil? && current_user.admin?%>
+        <li><a href="/admin/accessories/new" target="_self">Create Accessory </a></li>
+        <li><a href="/admin/trips/new" target="_self">Create Trip</a></li>
+        <li><a href="/admin/stations/new" target="_self">Create Station</a></li>
+        <li></li>
+      <%end%>
+      <% if !current_user.nil? %>
+        <li><a href="/users/<%="#{current_user.id}"%>" target="_self">Account</a></li>
+        <li><a href="/logout" target="_self">Log Out</a></li>
+      <%else%>
+      <li><a href="/login" target="_self">Log In</a></li>
+      <li><a href="users/new" target="_self">Create Account</a></li>
+      <%end%>
+    </ul>
+  </section>
+  <%end%>
 
-          <%= link_to "Log Out", logout_path %>
-        </div>
-        <% if !current_user.admin? %>
-          <%= "Logged in as: #{current_user.username}" %>
-        <% else %>
-        <%= link_to "Create New Trip", new_admin_trip_path %>
-        <%= link_to "Create New Accesory", admin_bike_shop_accessory_new_path %>
-        <div class="welcome-user">
 
-          <%= "Logged in as Admin User: #{current_user.username} "%>
-        </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+
 </nav>
