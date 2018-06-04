@@ -5,7 +5,7 @@
 
       <img ><%= image_tag(accessory.thumbnail) %></img>
     </div>
-  <%= accessory.title %>
+  <%= accessory.title %></br>
   <%= accessory.description %>
   <%= button_to "Edit", edit_admin_accessory_path(id: accessory.id), class: "btn btn-danger" %>
   <%= button_to 'Status', admin_bike_shop_path(accessory), data: { method: :patch,

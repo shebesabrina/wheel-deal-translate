@@ -34,7 +34,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/bike-shop/new', to: 'accessories#new', as: :bike_shop_accessory_new
-    # post '/bike-shop/new', to: 'accessories#create', as: :bike_shop_accessories
+    post '/bike-shop/new', to: 'accessories#create', as: :bike_shop_accessories
     get '/bike-shop', to: 'accessories#index', as: :bike_shop
     # get '/bike-shop', to: 'accessories#edit', as: :edit_accessory
     patch '/bike-shop', to: 'accessories#update', as: :update_accessory
