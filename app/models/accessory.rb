@@ -11,4 +11,8 @@ class Accessory < ApplicationRecord
   def set_default_image
     self.thumbnail = 'bike_horse.jpg' if thumbnail.empty?
   end
+
+  def check_role(role)
+    #status
+  end
 end
