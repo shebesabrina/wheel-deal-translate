@@ -12,6 +12,7 @@
     <% flash.each do |type, message| %>
     <%= content_tag :div, sanitize(message), class: type %>
     <% end %>
+    <h3><%= link_to "Cart: #{@cart.total_count}", cart_path %></h3>
     <div class="cart-tracker">
     </div>
     <container>
@@ -27,8 +28,5 @@
      <% end %>
      <%= yield %>
    </container>
-   <% flash.each do |type, message| %>
-    <%= content_tag :div, message, class: type %>
-    <% end %>
   </body>
 </html>
