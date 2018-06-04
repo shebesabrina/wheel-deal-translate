@@ -1,6 +1,7 @@
+<div class="trips-dashboard">
 <main>
   <h1>Trips Dashboard</h1>
-<table class="trips-dashboard">
+<table class="trips-dashboard-header">
   <thead>
     <tr>
       <th>Average Ride Duration</th>
@@ -30,18 +31,41 @@
   </table>
 </main>
 
-<div class="subscription-chart">
+<div class="trips-subscription-chart">
   <table>
     <h3>User Subscription Chart</h3>
     <% @subscription_types_breakdown.each do |type| %>
     <thead>
-      <th><%= type[1][0] %> (<%= type[0] %>)</th>
+      <th><h3><%= type[1][0] %> (<%= type[0] %>)</h3></th>
     </thead>
     <tbody>
       <tr>
-        <td><%= type[1][1] %></td>
+        <td><%= type[1][1] %>%</td>
       </tr>
     </tbody>
     <% end %>
   </table>
+</div>
+
+<div class="trips-monthly-yearly-chart">
+  <table>
+  <h3>Rides by Date:</h3>
+  <thead>
+    <% @yearly_breakdown.each do |yeardate, trip_count| %>
+    <tr>
+      <th><h2><%= "Rides in #{yeardate.strftime("%Y")}: "%><%= trip_count %></h2></th>
+    <tr>
+      <% @monthly_breakdown.each do |monthdate, trip_count| %>
+      <tbody>
+        <tr>
+          <% if yeardate.strftime("%Y") == monthdate.strftime("%Y")%>
+          <td><%= monthdate.strftime("%B") %> Count: <%= trip_count %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      <% end %>
+  </thead>
+  </tbody>
+  </table>
+</div>
 </div>

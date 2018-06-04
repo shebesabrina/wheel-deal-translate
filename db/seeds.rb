@@ -8,6 +8,8 @@ user1 = User.create!(username: 'Jerrel', password: 'password')
 user2 = User.create!(username: 'PettyPal', password: 'password')
 date = Date.strptime("6/15/2012", '%m/%d/%Y')
 
+DATES = [Date.strptime("6/15/2012", '%m/%d/%Y'), Date.strptime("4/15/2013", '%m/%d/%Y'), Date.strptime("7/15/2011", '%m/%d/%Y'), Date.strptime("6/15/2013", '%m/%d/%Y')]
+
 STATION_NAMES = ["Blake", "Market", "City Park", "Lucinda", "Shields", "College", "Oak", "Old Town", "Mulberry", "Silver Glenn", "Corron"]
 CITY = ["Fort Collins", "Denver", "Aurora", "Aspen", "Loveland", "Westminster", "Colorado Springs", "Golden", "Lakewood", "Arvada"]
 
@@ -21,7 +23,7 @@ STARTDATE = ["2/24/2011 11:21", "2/30/2013 11:14", "3/12/2013 14:13"]
 ENDDATE = ["8/29/2013 14:13", "8/30/2013 11:14",  "3/13/2013 11:14"]
 
 65.times do
-  Trip.create(duration: rand(1..100), start_date: date, start_station_id: rand(1..11), end_date: date, end_station_id: rand(1..11), bike_id: rand(1..100), subscription_type: SUB.sample, zip_code: rand(11111..99999))
+  Trip.create(duration: rand(1..100), start_date: DATES.sample, start_station_id: rand(1..11), end_date: DATES.sample, end_station_id: rand(1..11), bike_id: rand(1..100), subscription_type: SUB.sample, zip_code: rand(11111..99999))
 end
 
 26.times do
