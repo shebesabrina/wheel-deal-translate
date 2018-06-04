@@ -1,6 +1,6 @@
 class Admin::AccessoriesController < Admin::BaseController
   def index
-    @accessories = Accessory.paginate(page: params[:page], per_page: 12)
+    @accessories = Accessory.paginate(page: params[:page], per_page: 12).order('id DESC' )
   end
 
   def new
@@ -22,10 +22,13 @@ class Admin::AccessoriesController < Admin::BaseController
   end
 
   def update
-    @accessory = Accessory.create(accessory_params)
-    @accessory.check_role
-    @accessory.update
+    @accessory =  Accessory.find(params[:id])
+
+    @accessory.update(accessory_params)
+    redirect_to admin_bike_shop_path
   end
+
+
 
 
   private
