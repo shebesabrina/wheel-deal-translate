@@ -12,7 +12,10 @@
     <% flash.each do |type, message| %>
     <%= content_tag :div, message, class: type %>
     <% end %>
-    <h3><%= link_to "Cart: #{@cart.total_count}", cart_path %></h3>
+    <div class="cart-tracker">
+
+      <h3><%= link_to "Cart: #{@cart.total_count}", cart_path %></h3>
+    </div>
     <container>
      <% if current_user.nil? %>
        <% render 'layouts/navbar' %>

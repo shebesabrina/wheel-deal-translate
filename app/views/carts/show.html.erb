@@ -1,23 +1,40 @@
+
+<link rel="stylesheet" href="/stylesheet/cart.css">
 <h1>Cart</h1>
-<ul>
 
   <% @contents.each do |item_id, quantity| %>
-  <% item = Accessory.find(item_id) %>
-  <img><%= image_tag(item.thumbnail) %></img>
+  <div class="item">
+  <% item = @items.find(item_id) %>
+  <div class='cart-image'>
+    <img><%= image_tag(item.thumbnail) %></img>
+  </div>
   <h3>Accessory: <%= item.title %></h3>
   <h4>Price: <%= number_to_currency(quantity * item.price) %></h4>
-  <h4>Quantity: <%= quantity %></h4>
+
+  <h2>Quantity: </h2>
+  <label for="quantity">Quantity: </label>
+  <select id="quantity" name="quantity">
+     <option value="1">1</option>
+     <option value="2">2</option>
+     <option value="3">3</option>
+     <option value="4">4</option>
+     <option value="5">5</option>
+    <option value="quantity"><%= quantity %></option>
+  </select>
+
   <%= button_to "Remove", cart_destroy_path(item_id), :data => {:confirm => "You sure?"}, :method => "delete" %>
+</div>
 
   <% end %>
-</ul>
 
 <h2>Total:</h2>
 <%= number_to_currency(@cart.total_accessory_value) %>
 
-<h2>Check Out</h2>
-<% if current_user %>
-<%= link_to "Check Out", user_dashboard_path(current_user) %>
-<% else %>
-<%= link_to "Check Out", login_path %>
-<% end %>
+
+  <div class="checkout">
+  <% if current_user %>
+  <h2><%= link_to "Check Out", user_dashboard_path(current_user) %></h2>
+  <% else %>
+  <%= link_to "Check Out", login_path %>
+  <% end %>
+</div>

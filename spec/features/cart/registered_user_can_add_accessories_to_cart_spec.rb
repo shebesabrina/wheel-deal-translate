@@ -14,10 +14,10 @@ describe 'Unregistered user index page' do
       expect(current_path).to eq(cart_path)
       expect(page).to have_content(accessory.title)
       expect(page).to have_content(accessory.price)
-      # expect(page).to have_content(accessory.thumbnail)
+      expect(page).to have_content(accessory.thumbnail)
       expect(Accessory.all.count).to eq(1)
       expect(page).to have_button("Remove")
-      expect(page).to have_button("Check Out")
+      expect(page).to have_link("Check Out")
     end
   end
 end
@@ -34,8 +34,8 @@ describe 'Cart index page' do
 
     click_on 'Remove'
 
-    expect(page).to have_content("Successfully removed #{accessory.title}from your cart.")
-    expect(Accessory.all.count).to eq(0)
+    expect(page).to have_content("Successfully removed #{accessory.title} from your cart.")
+    expect(page).to_not have_content(accessory.thumbnail)
   end
 end
 
