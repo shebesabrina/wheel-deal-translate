@@ -1,10 +1,16 @@
 <nav>
 <% content_for :visitor do %>
 <div class="header">
-  <section class="container_head">
-    <section class="grid"></section>
+    <section class="grid">
       <section class="box2">
-        <div class="cart-icon"><%= link_to image_tag('cart_icon.png', alt: 'cart icon') + "#{@cart.total_count}", cart_path %><div>
+          <div>
+            <a href='/cart'>
+               <%=image_tag("cart_icon.png", border: 0)%>
+               <span>
+                <%= @cart.total_count %>
+              </span>
+           </a>
+          </div>
       </section>
   </section>
 </div>
@@ -30,8 +36,7 @@
 
 <% content_for :user do %>
   <div class="header">
-    <section class="container_head">
-      <section class="grid"></section>
+      <section class="grid">
         <section class="box1">
           <% if !current_user.nil? && !current_user.admin? %>
           <span class="htext">Logged in as <%= current_user.username %></span>
@@ -41,10 +46,16 @@
           <%end%>
         </section>
         <section class="box2">
-          <h3><%= link_to "Cart: #{@cart.total_count}", cart_path %></h3>
+            <div>
+              <a href='/cart'>
+                 <%=image_tag("cart_icon.png", border: 0)%>
+                 <span>
+                  <%= @cart.total_count %>
+                </span>
+             </a>
+            </div>
         </section>
       </section>
-    </section>
   </div>
   <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
   <label for="openSidebarMenu" class="sidebarIconToggle">
