@@ -38,6 +38,12 @@ body {
   justify-content:center;
 }
 
+.cart-icon {
+  display:grid;
+  grid-column:8/8;
+  height: 25px;
+  width: 25px;
+}
 
 
 .box1{

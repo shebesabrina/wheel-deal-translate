@@ -17,12 +17,22 @@ class Admin::AccessoriesController < Admin::BaseController
     end
   end
 
+  def edit
+    @accessory =  Accessory.find(params[:id])
+  end
+
+  def update
+    @accessory = Accessory.create(accessory_params)
+    @accessory.check_role
+    @accessory.update
+  end
+
 
   private
 
   def accessory_params
     # list_params_allowed = [:title, :description, :thumbnail, :price]
     # list_params_allowed << :role if current_user.admin?
-    params.require(:accessory).permit(:title, :description, :thumbnail, :price)
+    params.require(:accessory).permit(:title, :description, :thumbnail, :price, :role)
   end
 end

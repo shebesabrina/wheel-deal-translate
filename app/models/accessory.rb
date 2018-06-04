@@ -13,6 +13,5 @@ class Accessory < ApplicationRecord
   end
 
   def check_role(role)
-    #status
   end
 end

@@ -12,10 +12,7 @@
     <% flash.each do |type, message| %>
     <%= content_tag :div, sanitize(message), class: type %>
     <% end %>
-    <div class="cart-icon">
-      <h3><%= link_to image_tag('cart_icon.png') + "#{@cart.total_count}", cart_path %></h3>
 
-    </div>
     <div class="cart-tracker">
     </div>
     <container>

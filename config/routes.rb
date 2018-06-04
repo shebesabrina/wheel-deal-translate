@@ -34,11 +34,11 @@ Rails.application.routes.draw do
   resources :users
 
   namespace :admin do
-    post "/bike-shop/new", to: "accessories#create", as: :bike_shop_accessories
     get '/bike-shop/new', to: 'accessories#new', as: :bike_shop_accessory_new
     post '/bike-shop/new', to: 'accessories#create', as: :bike_shop_accessories
     get '/bike-shop', to: 'accessories#index', as: :bike_shop
-    patch '/bike-shop', to: 'accessories#update', as: :update_accessory
+    get '/bike-shop', to: 'accessories#update', as: :update_accessory
+    patch '/bike-shop', to: 'accessories#update'
   end
 
   namespace :admin do
@@ -47,6 +47,5 @@ Rails.application.routes.draw do
     resources :stations
     get '/dashboard', to: 'dashboard#show', as: :dashboard
   end
-
 
 end
