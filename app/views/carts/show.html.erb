@@ -1,5 +1,4 @@
 
-<link rel="stylesheet" href="/stylesheet/cart.css">
 <h1>Cart</h1>
 
   <% @contents.each do |item_id, quantity| %>
@@ -11,18 +10,12 @@
   <h3>Accessory: <%= item.title %></h3>
   <h4>Price: <%= number_to_currency(quantity * item.price) %></h4>
 
-  <h2>Quantity: </h2>
-  <label for="quantity">Quantity: </label>
-  <select id="quantity" name="quantity">
-     <option value="1">1</option>
-     <option value="2">2</option>
-     <option value="3">3</option>
-     <option value="4">4</option>
-     <option value="5">5</option>
-    <option value="quantity"><%= quantity %></option>
-  </select>
+<h3>Quantity: <%= quantity %><%= button_to "+", carts_path(item_id: item.id), method: 'patch' %>
+                             <%= button_to "-", carts_path(item_id: item.id, decrease: true), method: 'patch' %></h3>
 
   <%= button_to "Remove", cart_destroy_path(item_id), :data => {:confirm => "You sure?"}, :method => "delete" %>
+
+
 </div>
 
   <% end %>

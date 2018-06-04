@@ -8,7 +8,6 @@ class Admin::AccessoriesController < Admin::BaseController
   end
 
   def create
-    accessory_params[:thumbnail] = 'https://images.unsplash.com/photo-1503514989573-840194acc714?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5ab9b6de6c77db8877b2294a2128e2dc&auto=format&fit=crop&w=1951&q=80' if accessory_params[:thumbnail].nil?
     @accessory = Accessory.create(accessory_params)
     if @accessory.save
       redirect_to admin_bike_shop_path
@@ -18,9 +17,22 @@ class Admin::AccessoriesController < Admin::BaseController
     end
   end
 
+  def edit
+    @accessory =  Accessory.find(params[:id])
+  end
+
+  def update
+    @accessory = Accessory.create(accessory_params)
+    @accessory.check_role
+    @accessory.update
+  end
+
+
   private
 
   def accessory_params
-    params.require(:accessory).permit(:title, :description, :thumbnail, :price)
+    # list_params_allowed = [:title, :description, :thumbnail, :price]
+    # list_params_allowed << :role if current_user.admin?
+    params.require(:accessory).permit(:title, :description, :thumbnail, :price, :role)
   end
 end

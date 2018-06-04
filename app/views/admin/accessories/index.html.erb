@@ -5,12 +5,14 @@
 
       <img ><%= image_tag(accessory.thumbnail) %></img>
     </div>
-  <%= accessory.title %>
+  <%= accessory.title %></br>
   <%= accessory.description %>
-  <%= button_to "Edit", edit_admin_accessory_path(id: accessory.id), class: "btn btn-danger" %>
-  <%= button_to 'Status', admin_bike_shop_path(accessory), data: { method: :patch,
-                                                 params: { item: { status: 1 } } } %>
-  <!-- <%= button_to "Status", admin_update_accessory_path(id: accessory.id), class: "btn btn-danger" %> -->
+  <%= button_to "Edit", edit_admin_accessory_path(accessory.id), class: "btn btn-danger" %>
+  <% if accessory.role == 0 %>
+  <%= button_to "Reactivate", admin_update_accessory_path(accessory)%>
+  <% else %>
+  <%= button_to "Retire", admin_update_accessory_path(accessory)%>
+  <% end %>
   <%= link_to "View Details", admin_bike_shop_path(accessory) %>
   </div>
 <% end %>

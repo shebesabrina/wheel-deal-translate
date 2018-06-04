@@ -23,29 +23,30 @@ class Trip < ApplicationRecord
   end
 
   def self.most_popular_start_station
-    station_id = joins(:start_station).group('trips.start_station_id', 'trips.id').order('stations.name DESC').count.first.start_station_id
+    # station_id = joins(:start_station).group('trips.start_station_id', 'trips.id').order('stations.name DESC').count.first.start_station_id
+    station_id = joins(:start_station).group('trips.start_station_id', 'trips.id').order('COUNT(stations.name) DESC').first.start_station_id
     Station.find(station_id).name
   end
 
   def self.most_popular_end_station
-    station_id = joins(:end_station).group('trips.end_station_id', 'trips.id').order('stations.name DESC').count.first.end_station_id
+    station_id = joins(:end_station).group('trips.end_station_id', 'trips.id').order('COUNT(stations.name) DESC').first.end_station_id
     Station.find(station_id).name
   end
 
   def self.most_ridden_bike
-    group(:bike_id).count.max
+    group(:bike_id).order('count_all DESC').count.first
   end
 
   def self.least_ridden_bike
-    group(:bike_id).count.min
+    group(:bike_id).order('count_all ASC').count.first
   end
 
   def self.most_popular_date
-    group(:start_date).count.max
+    group(:start_date).count.min
   end
 
   def self.least_popular_date
-    group(:start_date).count.min
+    group(:start_date).count.max
   end
 
   def self.subscription_type_counts
@@ -77,6 +78,11 @@ class Trip < ApplicationRecord
     pluck(:subscription_type).uniq
   end
 
+  def self.yearly_breakdown
+    group("date_trunc('year', start_date)").order('count_all DESC').count.sort
+  end
+
   def self.monthly_breakdown
+    group("date_trunc('month', start_date)").order('count_all DESC').count.sort
   end
 end
