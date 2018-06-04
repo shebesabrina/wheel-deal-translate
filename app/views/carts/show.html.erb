@@ -16,3 +16,8 @@
 <%= number_to_currency(@cart.total_accessory_value) %>
 
 <h2>Check Out</h2>
+<% if current_user %>
+<%= link_to "Check Out", user_dashboard_path(current_user) %>
+<% else %>
+<%= link_to "Check Out", login_path %>
+<% end %>

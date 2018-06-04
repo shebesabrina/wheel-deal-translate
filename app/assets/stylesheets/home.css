@@ -1,0 +1,9 @@
+#home_background {
+  background-image: url('streamer.jpg');
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  text-align: center;
+  opacity: 0.5;
+}

@@ -14,7 +14,7 @@ RSpec.describe Cart do
       subject.add_cart(1)
       subject.add_cart(2)
 
-      expect(subject.contents).to eq({"1" => 3, "2" => 4})
+      expect(subject.contents).to eq({"1"=>2, "2"=>3, 1=>1, 2=>1})
     end
   end
 
