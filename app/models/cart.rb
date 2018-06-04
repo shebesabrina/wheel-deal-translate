@@ -9,12 +9,16 @@ class Cart
     @contents.values.sum
   end
 
-  def add_cart(id)
+  def add_item_cart(id)
     if @contents[id]
       @contents[id] += 1
     else
     @contents[id] = 1
     end
+  end
+
+  def reduce_item_cart
+    @contents[id] -= 1
   end
 
   def count_of(id)

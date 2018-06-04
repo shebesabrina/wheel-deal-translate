@@ -3,7 +3,7 @@ class CartsController < ApplicationController
 
   def create
     accessory = Accessory.find(params[:id])
-    @cart.add_cart(params[:id])
+    @cart.add_item_cart(params[:id])
     session[:cart] = @cart.contents
     flash[:notice] = "Added #{@cart.count_of(accessory.id)} #{accessory.title} to your cart."
 
@@ -18,8 +18,8 @@ class CartsController < ApplicationController
   def destroy
     @cart.delete_accessory(params[:id])
     accessory = Accessory.find(params[:id])
-    flash[:notice] = "Successfully removed #{accessory.title} from your cart."
-    
+    flash[:notice] = "Successfully removed #{view_context.link_to('accessory.title', cart_path)} from your cart.".html_safe
+
     redirect_to cart_path
   end
 

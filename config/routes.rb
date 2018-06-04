@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/bike-shop', to: 'accessories#index', as: :bike_shop
 
   get '/cart', to: 'carts#show', as: :cart
+  # patch '/carts', to: 'carts#update'
   delete '/cart/:id', to: 'carts#destroy', as: :cart_destroy
 
   resources :carts, except: [:index]
