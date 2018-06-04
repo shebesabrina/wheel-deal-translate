@@ -18,7 +18,7 @@ class CartsController < ApplicationController
   def destroy
     @cart.delete_accessory(params[:id])
     accessory = Accessory.find(params[:id])
-    flash[:notice] = "Successfully removed #{view_context.link_to('accessory.title', cart_path)} from your cart.".html_safe
+    flash[:notice] = "Successfully removed #{view_context.link_to("#{accessory.title}", accessory_path(accessory))} from your cart.".html_safe
 
     redirect_to cart_path
   end
