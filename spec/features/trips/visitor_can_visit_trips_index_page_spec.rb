@@ -6,8 +6,8 @@ describe 'opens trips index page' do
       Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
       Station.create(name: 'Blake', dock_count: 5, city: "Fort Collins")
       35.times do
-        Trip.create!(duration: 63, start_date: '8/29/2013 14:13',
-                     start_station_id: 1, end_date: '8/30/2013 11:14',
+        Trip.create!(duration: 63, start_date: Date.today,
+                     start_station_id: 1, end_date: Date.tomorrow,
                      end_station_id: 2, bike_id: 520,
                      subscription_type: 'Subscriber', zip_code: 94127)
       end
