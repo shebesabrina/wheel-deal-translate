@@ -33,7 +33,7 @@ describe 'Admin accessory pages' do
 
   it 'allows admin to update the status of an accesory' do
     admin = create(:user, role: 1)
-    accessory = create(:accessory)
+    create(:accessory)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit admin_bike_shop_path
