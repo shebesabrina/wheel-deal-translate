@@ -6,8 +6,8 @@
       <img ><%= image_tag(accessory.thumbnail) %></img>
     </div>
   <%= accessory.title %></br>
-  <%= accessory.description %>
-  <%= button_to "Edit", edit_admin_accessory_path(accessory), class: "btn btn-danger" %>
+  <%= accessory.description %><br>
+  <%= link_to "Edit", edit_admin_accessory_path(accessory), class: "btn btn-danger" %>
   <% if accessory.active? %>
     <%= form_for [:admin, accessory] do |f| %>
       <%= f.hidden_field :role, value: 'inactive' %>

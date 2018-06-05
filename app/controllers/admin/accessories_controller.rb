@@ -3,6 +3,10 @@ class Admin::AccessoriesController < Admin::BaseController
     @accessories = Accessory.paginate(page: params[:page], per_page: 12).order('id DESC' )
   end
 
+  def show
+    @accessory = Accessory.find(params[:id])
+  end
+
   def new
     @accessory = Accessory.new
   end
@@ -18,7 +22,7 @@ class Admin::AccessoriesController < Admin::BaseController
   end
 
   def edit
-    @accessory =  Accessory.find(params[:id])
+    @accessory = Accessory.find(params[:id])
   end
 
   def update
@@ -29,13 +33,9 @@ class Admin::AccessoriesController < Admin::BaseController
   end
 
 
-
-
   private
 
   def accessory_params
-    # list_params_allowed = [:title, :description, :thumbnail, :price]
-    # list_params_allowed << :role if current_user.admin?
     params.require(:accessory).permit(:title, :description, :thumbnail, :price, :role)
   end
 end
