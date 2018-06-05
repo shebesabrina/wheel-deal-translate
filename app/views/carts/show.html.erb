@@ -26,7 +26,7 @@
 
   <div class="checkout">
   <% if current_user %>
-  <h2><%= link_to "Check Out", user_dashboard_path(current_user) %></h2>
+  <h2><%= link_to "Check Out", orders_path, method: 'POST'  %></h2>
   <% else %>
   <%= link_to "Check Out", login_path %>
   <% end %>
