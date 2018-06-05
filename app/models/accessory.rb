@@ -9,7 +9,7 @@ class Accessory < ApplicationRecord
   enum role:[:active, :inactive]
 
   def set_default_image
-    self.thumbnail = 'bike_horse.jpg' if thumbnail.empty?
+    self.thumbnail = 'bike_horse.jpg' if thumbnail.nil?
   end
 
 
