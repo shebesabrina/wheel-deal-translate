@@ -21,6 +21,7 @@ describe 'User cart page' do
     visit cart_path
 
     expect(page).to have_content("$60.00")
+    save_and_open page
     expect(page).to have_content(accessory.title)
     expect(page).to have_content(accessory.thumbnail)
   end
