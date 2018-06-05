@@ -30,4 +30,17 @@ describe 'Admin accessory pages' do
 
     expect(current_path).to eq(edit_admin_accessory_path(accessory))
   end
+
+  it 'allows admin to update the status of an accesory' do
+    admin = create(:user, role: 1)
+    accessory = create(:accessory)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit admin_bike_shop_path
+
+      click_on "Retire"
+
+    expect(current_path).to eq(admin_bike_shop_path)
+    expect(page).to have_button('Reactivate')
+  end
 end
