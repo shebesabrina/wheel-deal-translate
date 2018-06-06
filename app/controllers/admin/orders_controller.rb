@@ -1,6 +1,5 @@
 class Admin::OrdersController < Admin::BaseController
   def index
-    binding.pry
     @orders = Order.all
     @all_orders = Order.all
     @grouped_by_status = @orders.by_status
