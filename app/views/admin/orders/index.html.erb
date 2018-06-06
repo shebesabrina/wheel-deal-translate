@@ -4,12 +4,11 @@
   <p>Number of <%= status%> orders: <%= qty %></p>
 <%end%>
 <table class="order">
-    <%= link_to "All", admin_orders_path %>
-    <%= link_to "Completed", '/admin/order/completed' %>
-    <%= link_to "Paid", '/admin/order/paid' %>
-    <%= link_to "Cancelled", '/admin/order/cancelled'%>
-    <%= link_to "Ordered", '/admin/order/ordered' %>
-  <thead>
+  <%= link_to 'All', admin_dashboard_path%></br>
+<%= link_to 'Cancelled Orders', admin_dashboard_path(type: 'cancelled') %></br>
+<%= link_to 'Paid Orders', admin_dashboard_path(type: 'paid') %></br>
+<%= link_to 'Completed Orders', admin_dashboard_path(type: 'completed') %></br>
+<%= link_to 'Ordered', admin_dashboard_path(type: 'ordered') %></br></br>
     <tr>
       <th>Order ID</th>
       <th>Quantity</th>

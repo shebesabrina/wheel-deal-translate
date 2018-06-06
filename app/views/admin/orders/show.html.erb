@@ -1,6 +1,16 @@
 <main>
   <h1>Order: <%=@order.id%> Created at: <%=@order.created_at%></h1>
   <h3>Status: <%= @order.status %></h3>
+
+  <% if @order.status == 'ordered' %>
+  <%= link_to 'Cancel', admin_order_path(order, "order[status]" => 'cancelled'), method: :put, type: 'submit' %></br>
+  <%= link_to "Mark as paid", admin_order_path(order, "order[status]" => 'paid'), method: :put, type: 'submit' %></br>
+<% end %>
+
+   <% if @order.status == 'paid' %>
+     <%= link_to "Cancel", admin_order_path(@order, "order[status]" => 'cancelled'), method: :put, type: 'submit' %></br>
+     <%= link_to "Mark as Completed", admin_order_path(@order, "order[status]" => 'completed'), method: :put, type: 'submit' %></br>
+<% end %>
   <% if @order.status == "completed" || "cancelled"%>
     <h1>Updated at: <%=@order.updated_at%></h1>
   <%end%>

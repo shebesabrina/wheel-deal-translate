@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   validates :status, presence: true
-  
+
   belongs_to :user
 
   has_many :accessory_orders
@@ -8,28 +8,30 @@ class Order < ApplicationRecord
 
   enum status: [:ordered, :paid, :cancelled, :completed]
 
+  scope :status, -> (status) { where status: status }
+
   def total_price
     accessories.sum(:price)
   end
 
   def self.by_status
-    Order.group(:status).count
+    group(:status).count
   end
 
   def self.orders_paid
-    Order.where(status: "paid")
+    where(status: "paid")
   end
 
   def self.orders_cancelled
-    Order.where(status: "cancelled")
+    where(status: "cancelled")
   end
 
   def self.orders_completed
-    Order.where(status: "completed")
+    where(status: "completed")
   end
 
   def self.orders_ordered
-    Order.where(status: "ordered")
+    where(status: "ordered")
   end
 
 end
