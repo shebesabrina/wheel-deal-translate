@@ -30,6 +30,7 @@ describe 'Cart index page' do
 
     click_on "Add to Cart"
 
+    save_and_open_page
     visit cart_path
 
     click_on 'Remove'
@@ -41,16 +42,23 @@ end
 
 describe 'Cart index page' do
   it 'allows registered user to check out' do
-    accessory = create(:accessory)
+    user1 = User.create(username: "penelop", password: "boom", role: 0)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+    accessory = Accessory.create(title: 'cat dog', description: 'Delicious!', thumbnail: 'bike_horse.jpg', price: 10 )
+    order = user1.orders.create!(status:rand(0..3))
+    AccessoryOrder.create(order_id: user1.id, accessory_id:accessory.id)
+    AccessoryOrder.create(order_id: user1.id, accessory_id:accessory.id)
+    AccessoryOrder.create(order_id: user1.id, accessory_id:accessory.id)
+    AccessoryOrder.create(order_id: user1.id, accessory_id:accessory.id)
 
     visit accessory_path(accessory)
-
-    click_on "Add to Cart"
-
+    4.times do
+      click_on "Add to Cart"
+    end
     visit cart_path
 
     click_on 'Check Out'
 
-    expect(page).to have_content("Successfully submitted your order totaling #{accessory.price}")
+    expect(page).to have_content("Successfully submitted your order totaling: $#{order.total_price}")
   end
 end

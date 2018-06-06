@@ -13,7 +13,6 @@ describe 'registered user' do
     it 'should show all orders' do
 
       visit '/dashboard'
-      save_and_open_page
       expect(page).to have_content(@order.total_price)
       expect(page).to have_content(@order.status)
       expect(page).to have_content(@order.id)
