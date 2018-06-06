@@ -12,12 +12,12 @@ describe Station, type: :model do
     before(:each) do
       @station1 = Station.create(name: 'Fort Collins Downtown', dock_count: 5, city: "Fort Collins")
       @station2 = Station.create(name: 'Blake St', dock_count: 10, city: "Denver")
-      @trip1 = Trip.create(duration: 63, start_date: '8/28/2013 14:13', start_station_id: @station1.id, end_date: '8/29/2013 14:14', end_station_id: @station1.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
-      @trip2 = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: @station1.id, end_date: '8/29/2013 14:14', end_station_id: @station2.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94128)
-      @trip3 = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: @station1.id, end_date: '8/29/2013 14:14', end_station_id: @station2.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94128)
-      @trip4 = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: @station2.id, end_date: '8/29/2013 14:14', end_station_id: @station1.id, bike_id: 528, subscription_type: 'Subscriber', zip_code: 94127)
-      @trip5 = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: @station2.id, end_date: '8/29/2013 14:14', end_station_id: @station1.id, bike_id: 528, subscription_type: 'Subscriber', zip_code: 94127)
-      @trip6 = Trip.create(duration: 63, start_date: '8/29/2013 14:13', start_station_id: @station2.id, end_date: '8/29/2013 14:14', end_station_id: @station2.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+      @trip1 = @station1.trips.create(duration: 63, start_date: Date.today, start_station_id: @station1.id, end_date: Date.tomorrow, end_station_id: @station2.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+      @trip2 = @station1.trips.create(duration: 63, start_date: Date.today, start_station_id: @station1.id, end_date: Date.tomorrow, end_station_id: @station2.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+      @trip3 = @station1.trips.create(duration: 63, start_date: Date.today, start_station_id: @station1.id, end_date: Date.tomorrow, end_station_id: @station2.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+      @trip4 = @station1.trips.create(duration: 63, start_date: Date.today, start_station_id: @station2.id, end_date: Date.tomorrow, end_station_id: @station1.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+      @trip5 = @station1.trips.create(duration: 63, start_date: Date.today, start_station_id: @station2.id, end_date: Date.tomorrow, end_station_id: @station1.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
+      @trip6 = @station1.trips.create(duration: 63, start_date: Date.today, start_station_id: @station2.id, end_date: Date.tomorrow, end_station_id: @station1.id, bike_id: 520, subscription_type: 'Subscriber', zip_code: 94127)
     end
     describe '.started_at' do
       it 'should show count that station shows up as a trips start station' do
