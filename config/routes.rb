@@ -45,7 +45,9 @@ Rails.application.routes.draw do
     resources :trips
     resources :accessories
     resources :stations
-    get '/dashboard', to: 'dashboard#show', as: :dashboard
+    resources :orders
+    get '/dashboard', to: 'orders#index', as: :dashboard
+    get '/order/:status', to: 'order#status'
   end
 
 end

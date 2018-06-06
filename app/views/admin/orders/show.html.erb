@@ -4,6 +4,10 @@
   <% if @order.status == "completed" || "cancelled"%>
     <h1>Updated at: <%=@order.updated_at%></h1>
   <%end%>
+  <% if !current_user.nil? && current_user.admin? %>
+    <%= link_to "Edit", edit_admin_order_path(@order) %>
+    <%= link_to "Delete", admin_order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
 <table class="order">
   <thead>
     <tr>
@@ -16,13 +20,15 @@
       <tr class=order_<%= @order.id %>>
         <% @order.accessories.uniq.each do |accessory|%>
         <tr>
-          <td><%= accessory.title %></td>
+          <td><%= link_to accessory.title, accessory_path(accessory) %></td>
           <td><%= accessory.quantity(@order.id) %></td>
           <td><%= accessory.subtotal(@order.id) %></td>
         <%end%>
         </tr>
     </tbody>
     <tfoot>
+    <tf>Customer Name: <%= @order.user.full_name %></tf>
+    <tf>Address: <%= @order.user.address %> </tf>
     <tf>Total: <%= @order.total_price %></tf>
     </tfoot>
   </table>

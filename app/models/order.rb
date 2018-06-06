@@ -12,32 +12,24 @@ class Order < ApplicationRecord
     accessories.sum(:price)
   end
 
-  def assign_accessories(contents)
-    contents.each do |key, value|
-      value.times do
-        AccessoryOrder.create(order_id: id, accessory_id: key.to_i)
-      end
-    end
+  def self.by_status
+    Order.group(:status).count
   end
 
-  def accessory_quantity
-    grouped_sub_total = Hash.new(0)
-    accessory_id_quantity = accessories.group(:id).count
+  def self.orders_paid
+    Order.where(status: "paid")
   end
 
-  def sub_total
-    grouped_sub_total = Hash.new(0)
-    accessory_id_quantity = accessories.group(:id).count
-    accessory_id_quantity = accessory_quantity
-    accessory_id_quantity.each do |id, qty|
-      accessory = Accessory.find(id)
-      grouped_sub_total[accessory.title] = (qty * accessory.price)
-    end
-    return grouped_sub_total
+  def self.orders_cancelled
+    Order.where(status: "cancelled")
   end
 
-  def total_price
-    accessories.sum(:price)
+  def self.orders_completed
+    Order.where(status: "completed")
+  end
+
+  def self.orders_ordered
+    Order.where(status: "ordered")
   end
 
 end

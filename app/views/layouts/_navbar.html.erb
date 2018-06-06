@@ -80,7 +80,7 @@
       <% if !current_user.nil? && current_user.admin?%>
         <li><a href="/admin/dashboard" target="_self">Dashboard</a></li>
       <%end%>
-      <% if !current_user.nil? %>
+      <% if !current_user.nil? && !current_user.admin? %>
         <li><a href="/dashboard" target="_self">Dashboard</a></li>
         <li><a href="/trips-dashboard" target="_self">Trips Dashboard</a></li>
         <li><a href="/stations-dashboard" target="_self">Station Dashboard</a></li>

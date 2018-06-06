@@ -3,15 +3,17 @@
 #
 # Examples:
 require 'date'
-admin = User.create!(username: 'Pizza Cat', password: 'password', role: 1)
-user1 = User.create!(username: 'Jerrel', password: 'password')
-user2 = User.create!(username: 'PettyPal', password: 'password')
+admin = User.create!(username: 'Pizza Cat', password: 'password', role: 1, full_name: "Pizza House Cat...Dog", address: "40W723 Willowbrook Drive, Saint Charles, IL, 60175")
+user1 = User.create!(username: 'Jerrel', password: 'password', full_name: "John Dingleberry Livingston", address: "40W723 Willowbrook Drive, Saint Charles, IL, 60175")
+user2 = User.create!(username: 'PettyPal', password: 'password', full_name: "John Dingleberry Livingston", address: "40W723 Willowbrook Drive, Saint Charles, IL, 60175")
 date = Date.strptime("6/15/2012", '%m/%d/%Y')
 
 DATES = [Date.strptime("6/15/2012", '%m/%d/%Y'), Date.strptime("4/15/2013", '%m/%d/%Y'), Date.strptime("7/15/2011", '%m/%d/%Y'), Date.strptime("6/15/2013", '%m/%d/%Y')]
 
 STATION_NAMES = ["Blake", "Market", "City Park", "Lucinda", "Shields", "College", "Oak", "Old Town", "Mulberry", "Silver Glenn", "Corron"]
 CITY = ["Fort Collins", "Denver", "Aurora", "Aspen", "Loveland", "Westminster", "Colorado Springs", "Golden", "Lakewood", "Arvada"]
+
+STATUS = ["ordered", "completed", "paid", "cancelled"]
 
 STATION_NAMES.map do |name|
   Station.create!(name: name, city: CITY.sample, dock_count: rand(0..12),
@@ -35,5 +37,10 @@ ITEM.map do |name|
   Accessory.create(title: name, description: 'Delicious!', thumbnail: 'bike_horse.jpg', price: 10 )
 end
 
-26.times do
+4.times do
+  user1.orders.create!(status:rand(0..3))
+  AccessoryOrder.create(accessory_id: rand(1..10), order_id:1)
+  AccessoryOrder.create(accessory_id: rand(1..10), order_id:2)
+  AccessoryOrder.create(accessory_id: rand(1..10), order_id:3)
+  AccessoryOrder.create(accessory_id: rand(1..10), order_id:4)
 end
