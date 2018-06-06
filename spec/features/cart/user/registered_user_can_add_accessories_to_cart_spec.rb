@@ -30,7 +30,6 @@ describe 'Cart index page' do
 
     click_on "Add to Cart"
 
-    save_and_open_page
     visit cart_path
 
     click_on 'Remove'
