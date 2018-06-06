@@ -1,3 +1,37 @@
-<% @order.accessories.each do |accessory| %>
-  <ul><%=accessory.title%>
-<%end%>
+<main>
+  <h1>Order: <%=@order.id%> Created at: <%=@order.created_at%></h1>
+<table class="order">
+  <thead>
+    <tr>
+      <% if !current_user.nil? && current_user.admin? %>
+      <th>Edit</th>
+      <th>Delete</th>
+      <% end %>
+      <th>Accessory Name</th>
+      <th>Status</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th></th>
+      <th>Cart Size</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+      <tbody>
+      <tr class=order_<%= @order.id %>>
+        <% if !current_user.nil? && current_user.admin? %>
+        <td><%= link_to "Edit", edit_admin_order_path(@order) %></td>
+        <td><%= link_to "Delete", admin_order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% @accessory_sub_total.each do |name, subtotal| %>
+        <tr>
+          <td><%= name %></td>
+          <td><%= @order.status %></td>
+          <% @quantity_by_accesory.each do |id, qty| %>
+            <td><%= qty %></td>
+          <td><%= subtotal%></td>
+          <%end%>
+        <%end%>
+      </tr>
+    </tbody>
+  </table>
+</main>
