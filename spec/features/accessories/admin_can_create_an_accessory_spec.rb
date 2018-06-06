@@ -26,16 +26,22 @@ describe 'Admin new accessory page' do
                       price: 5,
                       thumbnail: 'streamer.jpg')
 
-    visit '/admin/bike-shop/new'
+    visit new_admin_accessory_path
 
     fill_in 'accessory[title]', with: accessory.title
     fill_in 'accessory[description]', with: accessory.description
     fill_in 'accessory[price]', with: accessory.price
     fill_in 'accessory[thumbnail]', with: accessory.thumbnail
 
-    click_on 'Save Accessory'
+    # within('#create_accessory') do
+    #   fill_in 'accessory[title]', with: accessory.title
+    #   fill_in 'accessory[description]', with: accessory.description
+    #   fill_in 'accessory[price]', with: accessory.price
+    #   fill_in 'accessory[thumbnail]', with: accessory.thumbnail
+      click_button 'Create Accessory'
+    # end
 
-    expect(current_path).to eq(bike_shop_path)
+    expect(current_path).to eq(admin_bike_shop_path)
     expect(page).to have_content(accessory.title)
     expect(page).to have_content(accessory.description)
     expect(page).to have_content(accessory.price)

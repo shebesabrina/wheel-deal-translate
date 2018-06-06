@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :trips
     resources :stations
     resources :orders
-    resources :accessories
+    resources :accessories, except: [:index]
     get '/dashboard', to: 'orders#index', as: :dashboard
   end
 
