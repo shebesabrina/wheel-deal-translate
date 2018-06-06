@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   patch '/carts', to: 'carts#update'
   delete '/cart/:id', to: 'carts#destroy', as: :cart_destroy
 
-  resources :carts, except: [:index]
-
   resources :stations, except: [:show]
   get '/station/:name', to: 'stations#show'
   get '/stations-dashboard', to: 'stations#dashboard', as: :stations_dashboard
@@ -43,8 +41,7 @@ Rails.application.routes.draw do
     resources :stations
     resources :orders
     resources :accessories
-    get '/dashboard', to: 'orders#index'
-    get '/dashboard', to: 'dashboard#show'
+    get '/dashboard', to: 'orders#index', as: :dashboard
   end
 
 end

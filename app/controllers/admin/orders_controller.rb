@@ -1,6 +1,5 @@
 class Admin::OrdersController < Admin::BaseController
   def index
-    @order =
     @orders = Order.all
     @all_orders = Order.all
     @grouped_by_status = @orders.by_status
@@ -25,8 +24,7 @@ class Admin::OrdersController < Admin::BaseController
   def status
     redirect_to :index
   end
-
-
+  
   def update
     params["order"]["status"] = (params["order"]["status"])
     order = Order.find(params[:id])
