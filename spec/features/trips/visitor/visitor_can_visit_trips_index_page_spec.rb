@@ -17,9 +17,9 @@ describe 'opens trips index page' do
 
       expect(page).to have_content('Trips')
       expect(page).to have_content(trip.duration, count: 30)
-      expect(page).to have_content(trip.start_date, count: 30)
+      expect(page).to have_content(trip.start_date.strftime("%m/%d/%Y"), count: 30)
       expect(page).to have_content(trip.start_station.name, count: 30)
-      expect(page).to have_content(trip.end_date, count: 30)
+      expect(page).to have_content(trip.end_date.strftime("%m/%d/%Y"), count: 30)
       expect(page).to have_content(trip.end_station.name, count: 30)
       expect(page).to have_content(trip.bike_id, count: 30)
       expect(page).to have_content(trip.subscription_type, count: 30)

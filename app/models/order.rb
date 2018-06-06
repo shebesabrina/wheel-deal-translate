@@ -8,7 +8,13 @@ class Order < ApplicationRecord
 
   enum status: [:ordered, :paid, :cancelled, :completed]
 
-  scope :status, -> (status) { where status: status }
+  def assign_accessories(contents)
+    contents.each do |key, value|
+      value.times do
+        AccessoryOrder.create(order_id: id, accessory_id: key.to_i)
+      end
+    end
+  end
 
   def total_price
     accessories.sum(:price)
@@ -33,5 +39,4 @@ class Order < ApplicationRecord
   def self.orders_ordered
     where(status: "ordered")
   end
-
 end

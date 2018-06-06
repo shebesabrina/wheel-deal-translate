@@ -41,9 +41,9 @@ describe 'as a registered user logging in and visiting /trips-dashboard' do
     most_ridden_bike_count            = Trip.most_ridden_bike[1]
     least_ridden_bike_id              = Trip.least_ridden_bike[0]
     least_ridden_bike_count           = Trip.least_ridden_bike[1]
-    date_of_most_trips                = Trip.most_popular_date[0]
+    date_of_most_trips                = Trip.most_popular_date[0].strftime("%m/%d/%Y")
     date_of_most_trips_ride_count     = Trip.most_popular_date[1]
-    date_of_least_trips               = Trip.least_popular_date[0]
+    date_of_least_trips               = Trip.least_popular_date[0].strftime("%m/%d/%Y")
     date_of_least_trips_ride_count    = Trip.least_popular_date[1]
     subscriber_subscription_breakdown = Trip.subscription_type_breakdown.last
     customer_subscription_breakdown   = Trip.subscription_type_breakdown.first
