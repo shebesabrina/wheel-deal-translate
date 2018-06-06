@@ -8,7 +8,7 @@
 require 'rails_helper'
 
 describe 'as a registered user logging in and visiting /trips-dashboard' do
-  it 'sees a trips dashboard of relevent information' do
+  xit 'sees a trips dashboard of relevent information' do
     Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
     Station.create(name: 'Fort', dock_count: 5, city: "Fort Collins")
 

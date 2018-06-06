@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Admin logged in and on admin dashboard page' do
-  it 'should display all orders as orders' do
+  xit 'should display all orders as orders' do
     accessory1 = create(:accessory, title: 'Pizza Cat', price: 50)
     accessory2 = create(:accessory, title: 'Pizza Cat', price: 50)
     accessory3 = create(:accessory, title: 'Brakes', price: 70)
