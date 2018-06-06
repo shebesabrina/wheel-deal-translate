@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   resources :trips, only: [:show, :index]
   resources :accessories, only: [:show, :index]
 
-  resources :accessories
 
   resources :users
 
@@ -37,17 +36,15 @@ Rails.application.routes.draw do
     get '/bike-shop/new', to: 'accessories#new', as: :bike_shop_accessory_new
     post '/bike-shop/new', to: 'accessories#create', as: :bike_shop_accessories
     get '/bike-shop', to: 'accessories#index', as: :bike_shop
-    get '/bike-shop', to: 'accessories#update', as: :update_accessory
-    patch '/bike-shop', to: 'accessories#update'
   end
 
   namespace :admin do
     resources :trips
-    resources :accessories
     resources :stations
     resources :orders
+    resources :accessories
     get '/dashboard', to: 'orders#index', as: :dashboard
-    get '/order/:status', to: 'order#status'
+    get '/dashboard', to: 'dashboard#show', as: :dashboard
   end
 
 end
