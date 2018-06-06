@@ -1,5 +1,6 @@
 <main>
   <h1>Order: <%=@order.id%> Created at: <%=@order.created_at%></h1>
+  <h3>Status: <%= @order.status %></h3>
 <table class="order">
   <thead>
     <tr>
@@ -8,12 +9,8 @@
       <th>Delete</th>
       <% end %>
       <th>Accessory Name</th>
-      <th>Status</th>
       <th>Quantity</th>
       <th>Subtotal</th>
-      <th></th>
-      <th>Cart Size</th>
-      <th>Total</th>
     </tr>
     </thead>
       <tbody>
@@ -22,16 +19,16 @@
         <td><%= link_to "Edit", edit_admin_order_path(@order) %></td>
         <td><%= link_to "Delete", admin_order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
-        <% @accessory_sub_total.each do |name, subtotal| %>
+        <% @order.accessories.uniq.each do |accessory|%>
         <tr>
-          <td><%= name %></td>
-          <td><%= @order.status %></td>
-          <% @quantity_by_accesory.each do |id, qty| %>
-            <td><%= qty %></td>
-          <td><%= subtotal%></td>
-          <%end%>
+          <td><%= accessory.title %></td>
+          <td><%= accessory.quantity(@order.id) %></td>
+          <td><%= accessory.subtotal(@order.id) %></td>
         <%end%>
-      </tr>
+        </tr>
     </tbody>
+    <tfoot>
+    <tf>Total: <%= @order.total_price %></tf>
+    </tfoot>
   </table>
 </main>

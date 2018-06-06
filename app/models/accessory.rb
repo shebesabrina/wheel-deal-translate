@@ -17,4 +17,12 @@ class Accessory < ApplicationRecord
 
   def check_role(role)
   end
+
+  def quantity(order_id)
+    orders.find(order_id).accessories.where(id: id).count
+  end
+
+  def subtotal(order_id)
+    quantity(order_id) * price
+  end
 end

@@ -36,4 +36,8 @@ class Order < ApplicationRecord
     return grouped_sub_total
   end
 
+  def total_price
+    accessories.sum(:price)
+  end
+
 end

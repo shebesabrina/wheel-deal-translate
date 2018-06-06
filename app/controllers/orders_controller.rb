@@ -7,8 +7,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(current_user.id)
-    @accessory_sub_total = @order.sub_total #{pizza_cat, sub_total} with pizza_cat as the accessory title
-    @quantity_by_accesory = @order.accessory_quantity #{1=>4} with 1 being the accessory id and 4 being the qty
+    @order = Order.find(params[:id])
   end
 end

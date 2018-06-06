@@ -16,6 +16,8 @@ describe 'registered user index page' do
         visit cart_path
 
         click_on 'Check Out'
+
+        expect(page).to have_content(accessory.quantity)
       end
     end
   end
