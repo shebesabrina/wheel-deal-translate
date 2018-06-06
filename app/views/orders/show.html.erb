@@ -1,0 +1,29 @@
+<main>
+  <h1>Order: <%=@order.id%> Created at: <%=@order.created_at%></h1>
+  <h3>Status: <%= @order.status %></h3>
+  <% if @order.status == "completed" || "cancelled"%>
+    <h1>Updated at: <%=@order.updated_at%></h1>
+  <%end%>
+<table class="order">
+  <thead>
+    <tr>
+      <th>Accessory Name</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+    </thead>
+      <tbody>
+      <tr class=order_<%= @order.id %>>
+        <% @order.accessories.uniq.each do |accessory|%>
+        <tr>
+          <td><%= accessory.title %></td>
+          <td><%= accessory.quantity(@order.id) %></td>
+          <td><%= accessory.subtotal(@order.id) %></td>
+        <%end%>
+        </tr>
+    </tbody>
+    <tfoot>
+    <tf>Total: <%= @order.total_price %></tf>
+    </tfoot>
+  </table>
+</main>

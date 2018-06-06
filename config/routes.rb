@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   root to: 'dashboard#index'
-  get '/dashboard', to: 'dashboard#index', as: :dashboard
-  get '/user/:id/dashboard', to:'dashboard#show', as: :user_dashboard
-  post '/user/:id/dashboard', to:'dashboard#show'
+  get '/dashboard', to: 'dashboard#show', as: :dashboard
 
   get '/trips-dashboard', to: 'trips#dashboard', as: :trips_dashboard
   get '/bike-shop', to: 'accessories#index', as: :bike_shop
@@ -32,6 +30,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :orders
+  
   namespace :admin do
     get '/bike-shop/new', to: 'accessories#new', as: :bike_shop_accessory_new
     post '/bike-shop/new', to: 'accessories#create', as: :bike_shop_accessories
@@ -41,8 +41,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :trips
     resources :stations
-    get '/dashboard', to: 'dashboard#show', as: :dashboard
+    resources :orders
     resources :accessories
+    get '/dashboard', to: 'orders#index', as: :dashboard
+    get '/dashboard', to: 'dashboard#show', as: :dashboard
   end
 
 end
