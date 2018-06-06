@@ -1,8 +1,10 @@
 <main>
-  <h1>Order: <%=@order.id%> Created at: <%=@order.created_at%></h1>
+  <br>
+  <br>
+  <h1>Order: <%=@order.id%> Created at: <%= @order.created_at.strftime("%m/%d/%Y %I:%M%p")%></h1>
   <h3>Status: <%= @order.status %></h3>
   <% if @order.status == "completed" || "cancelled"%>
-    <h1>Updated at: <%=@order.updated_at%></h1>
+    <h1>Updated at: <%=@order.updated_at.strftime("%m/%d/%Y %I:%M%p")%></h1>
   <%end%>
 <table class="order">
   <thead>
@@ -18,12 +20,12 @@
         <tr>
           <td><%= accessory.title %></td>
           <td><%= accessory.quantity(@order.id) %></td>
-          <td><%= accessory.subtotal(@order.id) %></td>
+          <td><%= number_to_currency(accessory.subtotal(@order.id)) %></td>
         <%end%>
         </tr>
     </tbody>
     <tfoot>
-    <tf>Total: <%= @order.total_price %></tf>
+    <tf>Total: <%= number_to_currency(@order.total_price) %></tf>
     </tfoot>
   </table>
 </main>
