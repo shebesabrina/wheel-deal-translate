@@ -17,21 +17,21 @@ class Order < ApplicationRecord
   def self.by_status
     group(:status).count
   end
-  # 
-  # def self.orders_paid
-  #   where(status: "paid")
-  # end
-  #
-  # def self.orders_cancelled
-  #   where(status: "cancelled")
-  # end
-  #
-  # def self.orders_completed
-  #   where(status: "completed")
-  # end
-  #
-  # def self.orders_ordered
-  #   where(status: "ordered")
-  # end
+
+  def self.orders_paid
+    where(status: "paid")
+  end
+
+  def self.orders_cancelled
+    where(status: "cancelled")
+  end
+
+  def self.orders_completed
+    where(status: "completed")
+  end
+
+  def self.orders_ordered
+    where(status: "ordered")
+  end
 
 end
