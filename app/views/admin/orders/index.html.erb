@@ -2,6 +2,7 @@
     <main>
 <% @grouped_by_status.each do |status, qty| %>
   <p>Number of <%= status%> orders: <%= qty %></p>
+  <%= link_to status,  %>
 <%end%>
 <table class="order">
     <%= link_to "All", admin_orders_path %>

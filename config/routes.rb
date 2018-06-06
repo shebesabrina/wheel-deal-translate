@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :orders
-  
+
   namespace :admin do
     get '/bike-shop/new', to: 'accessories#new', as: :bike_shop_accessory_new
     post '/bike-shop/new', to: 'accessories#create', as: :bike_shop_accessories
@@ -43,8 +43,8 @@ Rails.application.routes.draw do
     resources :stations
     resources :orders
     resources :accessories
-    get '/dashboard', to: 'orders#index', as: :dashboard
-    get '/dashboard', to: 'dashboard#show', as: :dashboard
+    get '/dashboard', to: 'orders#index'
+    get '/dashboard', to: 'dashboard#show'
   end
 
 end
