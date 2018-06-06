@@ -26,9 +26,10 @@ RSpec.describe Order, type: :model do
       end
 
       describe 'relationships' do
-        it { should belong_to(:user) }
+        it { shouldq belong_to(:user) }
         it { should have_many(:accessories) }
         it { should have_many(:order_accessories)}
-
+      end
+    end
   end
 end
