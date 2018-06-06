@@ -18,17 +18,11 @@ RSpec.describe Order, type: :model do
       it 'should return the order total based on purchased accessories' do
         expect(@order.total_price).to eq(30)
       end
-    end
-    describe Order, type: :model do
-      context 'validations' do
-        it { should validate_presence_of(:status) }
-        it { should validate_presence_of(:total_price) }
-      end
 
       describe 'relationships' do
-        it { shouldq belong_to(:user) }
+        it { should belong_to(:user) }
         it { should have_many(:accessories) }
-        it { should have_many(:order_accessories)}
+        it { should have_many(:accessory_orders)}
       end
     end
   end

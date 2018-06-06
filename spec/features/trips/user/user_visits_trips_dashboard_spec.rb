@@ -19,7 +19,7 @@ describe 'as a registered user logging in and visiting /trips-dashboard' do
                    subscription_type: 'Subscriber', zip_code: 94127)
     end
     5.times do
-      Trip.create!(duration: 20, start_date: Date.today,
+      Trip.create!(duration: 20, start_date: Date.today.strftime("%m/%d/%Y"),
                    start_station_id: 1, end_date: Date.tomorrow,
                    end_station_id: 2, bike_id: 120,
                    subscription_type: 'Customer', zip_code: 94127)
