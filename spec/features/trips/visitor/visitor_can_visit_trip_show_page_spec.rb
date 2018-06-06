@@ -6,8 +6,8 @@ describe 'opens a trip show page' do
       station1 = Station.create(name: 'Fort Collins Downtown', dock_count: 5, city: "Fort Collins")
       station2 = Station.create(name: 'Blake St', dock_count: 10, city: "Denver")
       trip = Trip.create!(duration: 63,
-                          start_date: '8/29/2013 14:13',
-                          end_date: '8/29/2013 14:14',
+                          start_date: Date.today,
+                          end_date: Date.tomorrow,
                           start_station_id: station1.id,
                           end_station_id: station2.id,
                           bike_id: 520,
