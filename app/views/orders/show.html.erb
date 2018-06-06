@@ -1,6 +1,9 @@
 <main>
   <h1>Order: <%=@order.id%> Created at: <%=@order.created_at%></h1>
   <h3>Status: <%= @order.status %></h3>
+  <% if @order.status == "completed" || "cancelled"%>
+    <h1>Updated at: <%=@order.updated_at%></h1>
+  <%end%>
 <table class="order">
   <thead>
     <tr>

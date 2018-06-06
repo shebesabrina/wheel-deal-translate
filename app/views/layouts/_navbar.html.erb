@@ -39,6 +39,9 @@
       <section class="grid">
         <section class="box1">
           <% if !current_user.nil? && !current_user.admin? %>
+          <span><% flash.each do |type, message| %>
+      <%= content_tag :div, sanitize(message), class: type %>
+      <% end %></span>
           <span class="htext">Logged in as <%= current_user.username %></span>
           <%end%>
           <% if !current_user.nil? && current_user.admin? %>
