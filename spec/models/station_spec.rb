@@ -27,13 +27,13 @@ describe Station, type: :model do
 
     describe '.ended_at' do
       it 'should show count that station shows up as a trips end station' do
-        expect(@station1.ended_at).to eq(3)
+        expect(@station1.ended_at).to eq(6)
       end
     end
 
     describe '.popular_end_station' do
       it 'should return the most frequent destination station (name) for a given start station' do
-        expect(@station1.popular_end_station).to eq(@station2.name)
+        expect(@station1.popular_end_station).to eq(@station1.name)
       end
     end
 

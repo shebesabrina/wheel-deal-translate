@@ -1,26 +1,23 @@
+require 'rails_helper'
+
 describe 'Admin new accessory page' do
-  xit 'Allows admin to create an accessory' do
+  it 'Allows admin to create an accessory' do
     admin = create(:user, role: 1)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_admin?).and_return(admin)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-    accessory = create(:accessory, title: 'something new', thumbnail: 'basket.jpg')
+    visit new_admin_accessory_path
 
-    visit admin_bike_shop_accessory_new_path
+    fill_in 'accessory[title]', with: 'something meow'
+    fill_in 'accessory[description]', with: 'good stuff'
+    fill_in 'accessory[price]', with: 45
+    fill_in 'accessory[thumbnail]', with: 'bike_horse.jpg'
 
-    fill_in 'accessory[title]', with: accessory.title
-    fill_in 'accessory[description]', with: accessory.description
-    fill_in 'accessory[price]', with: accessory.price
-    fill_in 'accessory[thumbnail]', with: accessory.thumbnail
+    click_button 'Create Accessory'
 
-    click_on 'Save Accessory'
-
-    expect(current_path).to eq('/admin/bike-shop')
-    expect(page).to have_content(accessory.title)
-    expect(page).to have_content(accessory.thumbnail)
-    expect(page).to have_content(accessory.description)
-    expect(page).to have_content(accessory.role)
-    expect(page).to have_button("Edit")
-    expect(page).to have_button("Status")
+    expect(current_path).to eq(admin_bike_shop_path)
+    expect(page).to have_content('something meow')
+    expect(page).to have_content('Edit')
+    expect(page).to have_button('Retire')
   end
 end
