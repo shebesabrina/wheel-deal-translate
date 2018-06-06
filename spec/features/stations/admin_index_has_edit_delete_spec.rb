@@ -35,11 +35,9 @@ describe 'visitor' do
 
       visit stations_path
 
-      # expect(page).to have_button('Edit')
-
       click_link('Edit')
 
-      expect(current_path).to eq(edit_station_path(station1))
+      expect(current_path).to eq(edit_admin_station_path(station1))
     end
 
     it 'should update and redirect to station show page' do

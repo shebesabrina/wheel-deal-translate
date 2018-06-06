@@ -14,7 +14,7 @@ describe 'Admin new accessory page' do
     fill_in 'accessory[thumbnail]', with: accessory.thumbnail
 
     click_on 'Save Accessory'
-# save_and_open_page
+
     expect(current_path).to eq('/admin/bike-shop')
     expect(page).to have_content(accessory.title)
     expect(page).to have_content(accessory.thumbnail)
