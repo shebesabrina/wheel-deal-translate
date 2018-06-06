@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   patch '/carts', to: 'carts#update'
   delete '/cart/:id', to: 'carts#destroy', as: :cart_destroy
 
-  resources :carts, except: [:index]
-
   resources :stations, except: [:show]
   get '/station/:name', to: 'stations#show'
   get '/stations-dashboard', to: 'stations#dashboard', as: :stations_dashboard
@@ -31,7 +29,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :orders
-  
+
   namespace :admin do
     get '/bike-shop/new', to: 'accessories#new', as: :bike_shop_accessory_new
     post '/bike-shop/new', to: 'accessories#create', as: :bike_shop_accessories
