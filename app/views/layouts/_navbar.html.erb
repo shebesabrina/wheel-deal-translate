@@ -73,36 +73,36 @@
   </label>
   <section id="sidebarMenu">
     <ul class="sidebarMenuInner">
-      <li><a href="/" target="_self">Home</a></li>
+      <li><a href="/" target="_self"><%=t("Home")%></a></li>
       <li></li>
-      <li><a href="/trips" target="_self">Trips</a></li>
-      <li><a href="/stations" target="_self">Stations</a></li>
+      <li><a href="/trips" target="_self"><%= t("Trips")%></a></li>
+      <li><a href="/stations" target="_self"><%= t("Stations")%></a></li>
       <% if !current_user.nil? && current_user.admin? %>
-      <li><a href="/admin/bike-shop" target="_self">Accessories</a></li>
+      <li><a href="/admin/bike-shop" target="_self"><%= t("Accessories")%></a></li>
       <% else %>
-      <li><a href="/bike-shop" target="_self">Accessories</a></li>
+      <li><a href="/bike-shop" target="_self"><%= t("Accessories")%></a></li>
       <% end %>
       <% if !current_user.nil? && current_user.admin?%>
-        <li><a href="/admin/dashboard" target="_self">Dashboard</a></li>
+        <li><a href="/admin/dashboard" target="_self"></a></li>
       <%end%>
       <% if !current_user.nil? && !current_user.admin? %>
-        <li><a href="/dashboard" target="_self">Dashboard</a></li>
-        <li><a href="/trips-dashboard" target="_self">Trips Dashboard</a></li>
-        <li><a href="/stations-dashboard" target="_self">Station Dashboard</a></li>
+        <li><a href="/dashboard" target="_self"><%= t("Dashboard")%></a></li>
+        <li><a href="/trips-dashboard" target="_self"><%= t("Trips Dashboard")%></a></li>
+        <li><a href="/stations-dashboard" target="_self"><%= t("Stations Dashboard")%></a></li>
       <%end%>
       <li></li>
       <% if !current_user.nil? && current_user.admin?%>
-        <li><a href="/admin/accessories/new" target="_self">Create Accessory</a></li>
-        <li><a href="/admin/trips/new" target="_self">Create Trip</a></li>
-        <li><a href="/admin/stations/new" target="_self">Create Station</a></li>
+        <li><a href="/admin/accessories/new" target="_self"><%= t("Create Accessory")%></a></li>
+        <li><a href="/admin/trips/new" target="_self"><%= t("Create Trip")%></a></li>
+        <li><a href="/admin/stations/new" target="_self"><%= t("Create Dashboard")%></a></li>
         <li></li>
       <%end%>
       <% if !current_user.nil? %>
-        <li><a href="/users/<%="#{current_user.id}"%>" target="_self">Account</a></li>
-        <li><a href="/logout" target="_self">Log Out</a></li>
+        <li><a href="/users/<%="#{current_user.id}"%>" target="_self"><%= t("Account")%></a></li>
+        <li><a href="/logout" target="_self"><%= t("Log Out")%></a></li>
       <%else%>
-      <li><a href="/login" target="_self">Log In</a></li>
-      <li><a href="users/new" target="_self">Create Account</a></li>
+      <li><a href="/login" target="_self"><%= t("Log In")%></a></li>
+      <li><a href="users/new" target="_self"><%= t("Create Account")%></a></li>
       <%end%>
     </ul>
   </section>
