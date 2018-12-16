@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_cart
+  before_action :set_cart, :set_locale
   helper_method :current_user
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 
   def not_found
     raise AbstractController::ActionNotFound.new('404 Not Found')
