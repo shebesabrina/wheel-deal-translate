@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def set_locale
+    # require 'pry' ; binding.pry
     I18n.locale = request.env["HTTP_ACCEPT_LANGUAGE"].split(",").first || I18n.default_locale
   end
 
