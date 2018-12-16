@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_06_06_031710) do
     t.string "name"
     t.integer "dock_count"
     t.string "city"
-    t.date "installation_date"
+    t.string "installation_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
