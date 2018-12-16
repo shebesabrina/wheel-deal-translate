@@ -1,18 +1,18 @@
-<h1> Stations Dashboard </h1>
+<h1> <%= t("Stations Dashboard") %> </h1>
 <ul>
-    <li>Total Number of Stations: <%= @stations_count %></li>
-    <li>Average Number of Bikes per Station: <%= @average_num_bikes %></li>
-    <li>Station with the most Bikes: <%= @station_with_most_bikes.name %> - <%= @station_with_most_bikes.dock_count %></li>
-    <li>Stations with the most Bikes:
+    <li><%= t("Total Number of Stations") %>: <%= @stations_count %></li>
+    <li><%= t("Average Number of Bikes per Station") %>: <%= @average_num_bikes %></li>
+    <li><%= t("Station with the most Bikes") %>: <%= @station_with_most_bikes.name %> - <%= @station_with_most_bikes.dock_count %></li>
+    <li><%= t("Stations with the most Bikes") %>:
     <% @stations_with_most_bikes.each do |station| %>
       <%= station.name %> - <%= station.dock_count %>
     <%end%>
     </li>
-    <li>Stations with the least Bikes:
+    <li><%= t("Stations with the least Bikes") %>:
     <% @stations_with_least_bikes.each do |station| %>
       <%= station.name %> - <%= station.dock_count %>
     <%end%>
     </li>
-    <li>Most Recently Installed Station: <%= @most_recent_station %></li>
-    <li>Oldest Station: <%= @oldest_installed_station %></li>
+    <li><%= t("Most Recently Installed Station") %>: <%= @most_recent_station %></li>
+    <li><%= t("Oldest Station") %>: <%= @oldest_installed_station %></li>
 </ul>

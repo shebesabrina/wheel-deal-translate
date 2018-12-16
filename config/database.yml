@@ -83,3 +83,4 @@ production:
   database: bike-share_production
   username: bike-share
   password: <%= ENV['BIKE-SHARE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
