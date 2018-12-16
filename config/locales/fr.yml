@@ -1,2 +1,8 @@
 fr:
-  hello: "Bonjour le monde"
+  Hello: "Bonjour le monde"
+  Home: "Maison"
+  Trips: "Voyages"
+  Stations: "Stations"
+  Accessories: "Accessoires"
+  Log In: "S'identifier"
+  Create Account: "Créer un Compte"
