@@ -4,11 +4,11 @@
 <td><%= link_to "Edit", edit_admin_trip_path(@trip) %></td>
 <td><%= link_to "Delete", admin_trip_path(@trip), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <% end %>
-<p>Duration: <%= @trip.duration %></p>
-<p>Start Date: <%= @trip.start_date %></p>
-<p>End Date: <%= @trip.end_date %></p>
-<p>Start Station: <%= @trip.start_station.name %></p>
-<p>End Station: <%= @trip.end_station.name %></p>
-<p>Bike ID: <%= @trip.bike_id %></p>
-<p>Subscription Type: <%= @trip.subscription_type %></p>
-<p>Zip Code: <%= @trip.zip_code %></p>
+<p><%= interpret("Duration")%>: <%= @trip.duration %></p>
+<p><%= interpret("Start Date")%>: <%= @trip.start_date %></p>
+<p><%= interpret("End Date")%>: <%= @trip.end_date %></p>
+<p><%= interpret("Start Station")%>: <%= @trip.start_station.name %></p>
+<p><%= interpret("End Station")%>: <%= @trip.end_station.name %></p>
+<p><%= interpret("Bike ID")%>: <%= @trip.bike_id %></p>
+<p><%= interpret("Subscription Type")%>: <%= @trip.subscription_type %></p>
+<p><%= interpret("Zip Code")%>: <%= @trip.zip_code %></p>

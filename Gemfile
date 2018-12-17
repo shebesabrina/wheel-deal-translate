@@ -63,3 +63,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-12-16 14:08:05 -0700 by sabrinarobinson:
 gem "figaro", "~> 1.1"
+
+# Added at 2018-12-16 16:29:23 -0700 by sabrinarobinson:
+gem "google-cloud-translate", "~> 1.2"
+
+# Added at 2018-12-16 23:16:28 -0700 by sabrinarobinson:
+gem "htmlentities", "~> 4.3"

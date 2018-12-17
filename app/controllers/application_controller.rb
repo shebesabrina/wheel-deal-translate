@@ -1,11 +1,15 @@
+require 'google/cloud/translate'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :set_cart, :set_locale
-  helper_method :current_user
+  before_action :set_cart
+  helper_method :current_user, :interpret
 
-  def set_locale
-    # require 'pry' ; binding.pry
-    I18n.locale = request.env["HTTP_ACCEPT_LANGUAGE"].split(",").first || I18n.default_locale
+  def interpret(string)
+    translator = Google::Cloud::Translate.new(project_id: ENV['TRANSLATE_PROJECT_KEY'], credentials: '/Users/sabrinarobinson/Turing/2mod/projects/wheel-deal/Wheel-Deal-0dc89bb2d142.json')
+    locale = request.env["HTTP_ACCEPT_LANGUAGE"].split(",").first || 'en'
+    locale = locale.split("-").first if '-'.in? locale
+    HTMLEntities.new.decode(translator.translate(string, to: locale))
   end
 
   def not_found
